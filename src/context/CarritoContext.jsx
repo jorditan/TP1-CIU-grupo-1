@@ -1,0 +1,16 @@
+import { createContext, useContext, useState } from "react";
+
+const CarritoContext = createContext();
+
+export const useCarrito = () => {
+  return useContext(CarritoContext);
+};
+
+export const CarritoProvider = ({ children }) => {
+  const [carrito, setCarrito] = useState([]);
+  return (
+    <CarritoContext.Provider value={{ carrito, setCarrito }}>
+      {children}
+    </CarritoContext.Provider>
+  );
+};
