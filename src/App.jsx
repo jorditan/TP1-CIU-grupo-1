@@ -1,13 +1,17 @@
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
-
+import MainLayout from "./pages/MainLayout.jsx";
+import Inicio from "./pages/inicio/Inicio.jsx";
+import { Routes, Route } from "react-router-dom";
 function App() {
 
   return (
     <>
-      <Navbar />
-      <Footer/>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route index element={<Inicio />} />
+          <Route path="*" element={<p>Página no encontrada</p>} />
+        </Route>
+      </Routes>
     </>
   );
 }

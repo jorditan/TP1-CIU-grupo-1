@@ -1,23 +1,31 @@
 import { Search } from "lucide-react";
 import styles from "./Searchbar.module.css";
 
-function SearchBar({ placeholder = "Buscar en...", onChange, value, onSearch }) {
+function SearchBar({
+  placeholder,
+  onChange,
+  value,
+  onSearch,
+}) {
   return (
-    <div className={styles.searchBarContainer}>
+    <form
+      role="search"
+      className={styles.searchBarContainer}
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSearch?.(new FormData(e.currentTarget).get("search"));
+      }}
+    >
+      <Search className={styles.searchIcon} aria-hidden="true" />
       <input
-        type="text"
-        aria-label="Buscar"
+        type="search"
+        name="search"
+        aria-label="Buscar libros"
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") onSearch?.(e.currentTarget.value);
-        }}
-
       />
-      <Search className={styles.searchIcon} aria-hidden="true" />
-
-    </div>
+    </form>
   );
 }
 

@@ -1,10 +1,81 @@
 :root {
+  color-scheme: light;
   --bs-font-sans-serif: "Geist", sans-serif;
   --bs-body-font-family: var(--bs-font-sans-serif);
+
+  --color-primary: #24483d;
+  --color-primary-hover: #19372e;
+  --color-primary-light: #e7efea;
+
+  --color-background: #faf8f4;
+  --color-surface: #ffffff;
+
+  --color-text: #292824;
+  --color-text-secondary: #6b6a65;
+  --color-border: #e5e2dc;
+
+  --color-accent: #b86b4b;
+  --color-success: #287a54;
+  --color-error: #c2413b;
+
+  --bs-body-color: var(--color-text);
+  --bs-body-bg: var(--color-background);
+  --bs-secondary-color: var(--color-text-secondary);
+  --bs-border-color: var(--color-border);
+  --bs-tertiary-bg: var(--color-primary-light);
+  --bs-link-color: var(--color-primary);
+  --bs-link-hover-color: var(--color-primary-hover);
+}
+
+/* Esto es para que cuando cambiemos el modo oscuro no tengamos que hacer mil condicionales en cada clase . */
+:root.dark {
+  color-scheme: dark;
+
+  --color-primary: #8bc7ac;
+  --color-primary-hover: #b0ddc6;
+  --color-primary-light: #263b32;
+
+  --color-background: #181b19;
+  --color-surface: #222724;
+
+  --color-text: #f1eee7;
+  --color-text-secondary: #b8b8af;
+  --color-border: #424b45;
+
+  --color-accent: #dfa182;
+  --color-success: #80cba2;
+  --color-error: #f28b82;
 }
 
 body {
   font-family: var(--bs-body-font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.dropdown-menu {
+  --bs-dropdown-color: var(--color-text);
+  --bs-dropdown-bg: var(--color-surface);
+  --bs-dropdown-border-color: var(--color-border);
+  --bs-dropdown-link-color: var(--color-text);
+  --bs-dropdown-link-hover-color: var(--color-primary);
+  --bs-dropdown-link-hover-bg: var(--color-primary-light);
+  --bs-dropdown-link-active-color: var(--color-surface);
+  --bs-dropdown-link-active-bg: var(--color-primary);
+  --bs-dropdown-link-disabled-color: var(--color-text-secondary);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--color-text-secondary);
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-background);
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-active-color: var(--color-background);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-disabled-color: var(--color-text-secondary);
+  --bs-btn-disabled-border-color: var(--color-border);
 }
 
 html {

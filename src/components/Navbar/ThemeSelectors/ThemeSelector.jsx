@@ -1,18 +1,18 @@
-import { useState } from "react";
-import {Sun, Moon} from "lucide-react";
+import { useTheme } from "../../../hooks/useTheme";
+import { Sun, Moon } from "lucide-react";
 import Button from "react-bootstrap/Button";
 
 function ThemeSelector() {
-  const [theme, setTheme] = useState("light");
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  }
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
-      <Button variant="outline-secondary" onClick={toggleTheme} className="theme-selector">
-          {theme === "light" ? <Sun /> : <Moon />}
+      <Button
+        variant="outline-secondary"
+        onClick={toggleTheme}
+        className="theme-selector"
+      >
+        {theme === "light" ? <Sun /> : <Moon />}
       </Button>
     </>
   );

@@ -1,5 +1,14 @@
 .navbar {
-  background-color: #faf8f4;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+}
+
+.upperNavbar,
+.lowerNavbar {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background);
 }
 
 .upperNavContainer,
@@ -22,7 +31,6 @@
 }
 
 .lowerNavContainer {
-  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -30,10 +38,22 @@
   padding: 8px 1rem 8px 1rem;
 }
 
+.logoLink {
+  display: block;
+  min-width: 0;
+}
+
+.logo {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+}
+
 .navTitle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #196e55;
+  color: var(--color-primary);
 }
 
 .navItems {
@@ -49,7 +69,7 @@
 
 .navItem {
   text-decoration: none;
-  color: #333;
+  color: var(--color-text);
   font-weight: bold;
   list-style: none;
 }
@@ -60,21 +80,21 @@
 
 .important {
   text-decoration: none;
-  color: #196e55;
+  color: var(--color-primary);
   font-weight: bold;
 }
 
 .categoryToggle {
   padding: 0;
   border: 0;
-  color: #333;
+  color: var(--color-text);
   font-weight: bold;
   text-decoration: none;
 }
 
 .categoryToggle:hover,
 .categoryToggle:focus-visible {
-  color: #333;
+  color: var(--color-primary-hover);
   text-decoration: underline;
 }
 

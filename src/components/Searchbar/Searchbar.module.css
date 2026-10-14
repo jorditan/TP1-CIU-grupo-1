@@ -1,22 +1,41 @@
 .searchBarContainer {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 80%;
   margin-inline: auto;
-}
-
-.searchBarContainer input {
-  width: 100%;
-  padding: 8px 36px 8px 12px;
-  border: 1px solid #cacaca;
-  background-color: #f0f0f0;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   border-radius: 8px;
 }
 
+.searchBarContainer input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.searchBarContainer input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+.searchBarContainer:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.searchBarContainer input:focus {
+  outline: none;
+}
+
 .searchIcon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
   width: 18px;
   height: 18px;
   pointer-events: none;
