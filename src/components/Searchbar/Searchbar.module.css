@@ -1,0 +1,23 @@
+.searchBarContainer {
+  position: relative;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.searchBarContainer input {
+  width: 100%;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid #cacaca;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}

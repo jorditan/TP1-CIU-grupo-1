@@ -1,0 +1,97 @@
+.navbar {
+  background-color: #faf8f4;
+}
+
+.upperNavContainer,
+.lowerNavContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.upperNavContainer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
+  padding: 1rem;
+}
+
+.upperNavContainer h3 {
+  margin: 0;
+}
+
+.lowerNavContainer {
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 1rem 8px 1rem;
+}
+
+.navTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #196e55;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.navItem {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  list-style: none;
+}
+
+.navItem a {
+  text-decoration: none;
+}
+
+.important {
+  text-decoration: none;
+  color: #196e55;
+  font-weight: bold;
+}
+
+.categoryToggle {
+  padding: 0;
+  border: 0;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.categoryToggle:hover,
+.categoryToggle:focus-visible {
+  color: #333;
+  text-decoration: underline;
+}
+
+.navActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .upperNavContainer {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+
+  .upperNavContainer > :nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
