@@ -1,13 +1,31 @@
 import { Button } from "react-bootstrap";
-import {ShoppingCart} from "lucide-react";
+import { ShoppingCart } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useCarrito } from "../../../context/CarritoContext";
 import styles from "./CartButton.module.css";
 
-function CartButton({ items, onClick }) {
+function CartButton() {
+  const { totalProductos } = useCarrito();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleClick = () => {
+    if (pathname === "/carrito") {
+      navigate("/");
+    } else {
+      navigate("/carrito");
+    }
+  };
+
   return (
     <>
-       <Button className={styles.cartButton} variant="outline-secondary" onClick={onClick} >
-          <span className="cart-count">{items}</span>
-          <ShoppingCart className={styles.cartIcon} aria-hidden="true" />
+      <Button
+        className={styles.cartButton}
+        variant="outline-secondary"
+        onClick={handleClick}
+      >
+        <span className="cart-count">{totalProductos}</span>
+        <ShoppingCart className={styles.cartIcon} aria-hidden="true" />
       </Button>
     </>
   );

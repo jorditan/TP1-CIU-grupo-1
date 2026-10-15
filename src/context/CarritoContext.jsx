@@ -1,16 +1,91 @@
 import { createContext, useContext, useState } from "react";
 
-const CarritoContext = createContext();
+const CarritoContext = createContext(null);
 
-export const useCarrito = () => {
-  return useContext(CarritoContext);
-};
+function formatearPrecio(valor) {
+  return valor.toLocaleString("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  });
+}
 
-export const CarritoProvider = ({ children }) => {
+function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
+
+  const agregar = (producto) => {
+    setCarrito((anterior) => {
+      const existe = anterior.find((item) => item.id === producto.id);
+      if (existe) {
+        return anterior.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        );
+      }
+      return [...anterior, { ...producto, cantidad: 1 }];
+    });
+  };
+
+  const aumentar = (id) => {
+    setCarrito((anterior) =>
+      anterior.map((item) =>
+        item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+      )
+    );
+  };
+
+  const disminuir = (id) => {
+    setCarrito((anterior) =>
+      anterior.map((item) =>
+        item.id === id && item.cantidad > 1
+          ? { ...item, cantidad: item.cantidad - 1 }
+          : item
+      )
+    );
+  };
+
+  const eliminar = (id) => {
+    setCarrito((anterior) => anterior.filter((item) => item.id !== id));
+  };
+
+  const vaciar = () => setCarrito([]);
+
+  const totalProductos = carrito.reduce(
+    (acumulado, item) => acumulado + item.cantidad,
+    0
+  );
+
+  const total = carrito.reduce(
+    (acumulado, item) => acumulado + item.precio * item.cantidad,
+    0
+  );
+
   return (
-    <CarritoContext.Provider value={{ carrito, setCarrito }}>
+    <CarritoContext.Provider
+      value={{
+        carrito,
+        agregar,
+        aumentar,
+        disminuir,
+        eliminar,
+        vaciar,
+        totalProductos,
+        total,
+      }}
+    >
       {children}
     </CarritoContext.Provider>
   );
-};
+}
+
+function useCarrito() {
+  const contexto = useContext(CarritoContext);
+  if (!contexto) {
+    throw new Error("useCarrito tiene que usarse dentro de <CarritoProvider>");
+  }
+  return contexto;
+}
+
+export { formatearPrecio, useCarrito };
+
+export default CarritoProvider;

@@ -24,6 +24,7 @@ export function Navbar() {
     { name: "Más vendidos", href: "/mas-vendidos", important: false },
     { name: "Novedades", href: "/novedades", important: true },
     { name: "Usados", href: "/usados", important: false },
+    { name: "Contacto", href: "/contacto", important: false }
   ];
   return (
     <>
