@@ -6,13 +6,16 @@
   --color-primary: #24483d;
   --color-primary-hover: #19372e;
   --color-primary-light: #e7efea;
-
+  --color-secondary: #fafafa;
+  --color-secondary-hover: #dafde8;
+  --color-muted-foreground: #f0f0f0;
   --color-background: #faf8f4;
   --color-surface: #ffffff;
 
   --color-text: #292824;
   --color-text-secondary: #6b6a65;
   --color-border: #e5e2dc;
+  --footer-background-color: #24483d;
 
   --color-accent: #b86b4b;
   --color-success: #287a54;

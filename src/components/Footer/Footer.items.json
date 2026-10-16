@@ -1,0 +1,31 @@
+[
+  {
+    "category": "Navegación",
+    "subcategories": [
+      { "name": "Inicio", "href": "/" },
+      { "name": "Ofertas", "href": "/ofertas" },
+      { "name": "Más vendidos", "href": "/mas-vendidos" },
+      { "name": "Novedades", "href": "/novedades" },
+      { "name": "Usados", "href": "/usados" }
+    ]
+  },
+  {
+    "category": "Ayuda y Soporte",
+    "subcategories": [
+      { "name": "Preguntas frecuentes", "href": "/faq" },
+      { "name": "Envíos y entregas", "href": "/envios" },
+      { "name": "Cambios y devoluciones", "href": "/devoluciones" },
+      { "name": "Medios de pago", "href": "/medios-de-pago" },
+      { "name": "Contacto", "href": "/contacto" }
+    ]
+  },
+  {
+    "category": "Institucional",
+    "subcategories": [
+      { "name": "Sobre Punto y Aparte", "href": "/nosotros" },
+      { "name": "Sucursales", "href": "/sucursales" },
+      { "name": "Términos y condiciones", "href": "/terminos" },
+      { "name": "Política de privacidad", "href": "/privacidad" }
+    ]
+  }
+]
