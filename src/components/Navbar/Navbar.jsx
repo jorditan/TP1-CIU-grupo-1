@@ -99,12 +99,12 @@ export function Navbar() {
                 {items.map((item) => {
                   return (
                     <li className={styles.navItem} key={item.href}>
-                      <a
+                      <Link
                         className={`${styles.navItem} ${item.important ? styles.important : ""}`}
-                        href={item.href}
+                        to={item.href}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
