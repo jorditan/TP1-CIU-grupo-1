@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
+
 import SearchBar from "../Searchbar/Searchbar";
 import ThemeSelector from "./ThemeSelectors/ThemeSelector";
 import CartButton from "./CartButton/CartButton";
 import styles from "./Navbar.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { productos } from "../../data/productos";
-import { useState } from "react";
 import { placeholders } from "./placeholders.js";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme";
@@ -19,6 +20,25 @@ export function Navbar() {
     () => placeholders[Math.floor(Math.random() * placeholders.length)],
   );
 
+  const [lowerNavVisible, setLowerNavVisible] = useState(true);
+
+  useEffect(() => {
+    // Este es el useeffect que maneja el scroll del navar. Si se scrollea para abajo, la parte de categorias, ofertas y etc se oculta. Es para ahorrar espacio al usuario
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setLowerNavVisible(false);
+      } else if (window.scrollY < 5) {
+        setLowerNavVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [])
+
   const items = [
     { name: "Ofertas", href: "/ofertas", important: true },
     { name: "Más vendidos", href: "/mas-vendidos", important: false },
@@ -26,6 +46,8 @@ export function Navbar() {
     { name: "Usados", href: "/usados", important: false },
     { name: "Contacto", href: "/contacto", important: false }
   ];
+
+
   return (
     <>
       <header className={styles.header}>
@@ -51,7 +73,7 @@ export function Navbar() {
               </div>
             </div>
           </div>
-          <div className={styles.lowerNavbar}>
+          <div className={`${styles.lowerNavbar} ${!lowerNavVisible ? styles.lowerHidden : ""}`}>
             <div className={styles.lowerNavContainer}>
               <ul className={styles.navItems}>
                 <Dropdown as="li" className={styles.navItem}>

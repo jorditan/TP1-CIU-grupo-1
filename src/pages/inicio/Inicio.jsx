@@ -1,8 +1,10 @@
+import Carrusel from "../../components/Carrusel/Carrusel";
+
 function Inicio() {
   return (
     <>
       <section>
-        <p>Este es el inicio :p ¿les gusta xd?</p>
+        <Carrusel />
       </section>
     </>
   );
