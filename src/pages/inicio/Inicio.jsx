@@ -1,4 +1,4 @@
-import style from "./Inicio.module.css";
+import style from "./inicio.module.css";
 import { Link } from "react-router-dom";
 import { Card, Badge } from "react-bootstrap";
 import Carrusel from "../../components/Carrusel/Carrusel";
