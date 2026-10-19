@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCarrito, formatearPrecio } from "../context/CarritoContext";
 import CarritoItem from "../components/CarritoItem";

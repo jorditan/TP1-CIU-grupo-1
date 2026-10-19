@@ -1,4 +1,3 @@
-import React from "react";
 import { formatearPrecio } from "../context/CarritoContext";
 import styles from "./CarritoItem.module.css";
 
