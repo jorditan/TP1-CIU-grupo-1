@@ -1,3 +1,4 @@
+// Catálogo de demostración: precios de referencia, badges y financiación ficticios.
 export const productos = [
     {
         id: 1,
@@ -16,7 +17,7 @@ export const productos = [
             isbn: "9789505471234",
             anio: 2022
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 2,
@@ -35,7 +36,7 @@ export const productos = [
             isbn: "9789877254567",
             anio: 2021
         },
-        label: "Más vendido"
+        badges: ["Más vendido","Recomendado"]
     },
     {
         id: 3,
@@ -54,7 +55,7 @@ export const productos = [
             isbn: "9788418933123",
             anio: 2023
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 4,
@@ -73,7 +74,7 @@ export const productos = [
             isbn: "9788445000661",
             anio: 2020
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 5,
@@ -92,7 +93,8 @@ export const productos = [
             isbn: "9788478884452",
             anio: 2021
         },
-        label: "Más vendido"
+        badges: ["Más vendido"],
+        cuotasSinInteres: 6
     },
     {
         id: 6,
@@ -111,7 +113,7 @@ export const productos = [
             isbn: "9788401337208",
             anio: 2019
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 7,
@@ -130,7 +132,9 @@ export const productos = [
             isbn: "9789877257896",
             anio: 2022
         },
-        label: "Oferta"
+        precioAnterior: 15000,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 8,
@@ -149,7 +153,7 @@ export const productos = [
             isbn: "9788497599241",
             anio: 2020
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 9,
@@ -168,7 +172,7 @@ export const productos = [
             isbn: "9788445000678",
             anio: 2021
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 10,
@@ -187,7 +191,7 @@ export const productos = [
             isbn: "9788483069458",
             anio: 2011
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 11,
@@ -206,7 +210,8 @@ export const productos = [
             isbn: "9788498381495",
             anio: 2020
         },
-        label: "Más vendido"
+        badges: ["Más vendido"],
+        cuotasSinInteres: 6
     },
     {
         id: 12,
@@ -225,7 +230,7 @@ export const productos = [
             isbn: "9788491221379",
             anio: 2022
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 13,
@@ -244,7 +249,7 @@ export const productos = [
             isbn: "9788445009121",
             anio: 2023
         },
-        label: "Edición especial"
+        badges: ["Edición especial"]
     },
     {
         id: 14,
@@ -263,7 +268,7 @@ export const productos = [
             isbn: "9789877253450",
             anio: 2021
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 15,
@@ -282,7 +287,7 @@ export const productos = [
             isbn: "9788466659734",
             anio: 2024
         },
-        label: "Novedad"
+        badges: ["Novedad"]
     },
     {
         id: 16,
@@ -301,7 +306,7 @@ export const productos = [
             isbn: "9789877253801",
             anio: 2022
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 17,
@@ -320,7 +325,7 @@ export const productos = [
             isbn: "9788420650944",
             anio: 2020
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 18,
@@ -339,7 +344,7 @@ export const productos = [
             isbn: "9788408168249",
             anio: 2023
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 19,
@@ -358,7 +363,9 @@ export const productos = [
             isbn: "9788420674209",
             anio: 2021
         },
-        label: "Oferta"
+        precioAnterior: 21000,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 20,
@@ -377,7 +384,7 @@ export const productos = [
             isbn: "9789873752193",
             anio: 2022
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 21,
@@ -396,7 +403,7 @@ export const productos = [
             isbn: "9788403519800",
             anio: 2023
         },
-        label: "Novedad"
+        badges: ["Novedad"]
     },
     {
         id: 22,
@@ -415,7 +422,7 @@ export const productos = [
             isbn: "9789875666474",
             anio: 2022
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 23,
@@ -434,7 +441,7 @@ export const productos = [
             isbn: "9788408163398",
             anio: 2021
         },
-        label: "Edición especial"
+        badges: ["Edición especial"]
     },
     {
         id: 24,
@@ -453,7 +460,9 @@ export const productos = [
             isbn: "9788420668987",
             anio: 2020
         },
-        label: "Oferta"
+        precioAnterior: 18800,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 25,
@@ -472,7 +481,7 @@ export const productos = [
             isbn: "9789500700177",
             anio: 2021
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 26,
@@ -491,7 +500,7 @@ export const productos = [
             isbn: "9788420437484",
             anio: 2022
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 27,
@@ -510,7 +519,7 @@ export const productos = [
             isbn: "9789507316782",
             anio: 2021
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 28,
@@ -529,7 +538,7 @@ export const productos = [
             isbn: "9789875666481",
             anio: 2023
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 29,
@@ -548,7 +557,9 @@ export const productos = [
             isbn: "9789875669000",
             anio: 2022
         },
-        label: "Oferta"
+        precioAnterior: 20000,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 30,
@@ -567,7 +578,7 @@ export const productos = [
             isbn: "9788484284147",
             anio: 2021
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 31,
@@ -586,7 +597,7 @@ export const productos = [
             isbn: "9788420651347",
             anio: 2020
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 32,
@@ -605,7 +616,7 @@ export const productos = [
             isbn: "9788420674254",
             anio: 2022
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 33,
@@ -624,7 +635,9 @@ export const productos = [
             isbn: "9788467034172",
             anio: 2023
         },
-        label: "Oferta"
+        precioAnterior: 21900,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 34,
@@ -643,7 +656,7 @@ export const productos = [
             isbn: "9788497594321",
             anio: 2021
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 35,
@@ -662,7 +675,7 @@ export const productos = [
             isbn: "9788415130130",
             anio: 2022
         },
-        label: "Edición especial"
+        badges: ["Edición especial"]
     },
     {
         id: 36,
@@ -681,7 +694,7 @@ export const productos = [
             isbn: "9788445076413",
             anio: 2020
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 37,
@@ -700,7 +713,7 @@ export const productos = [
             isbn: "9789877252013",
             anio: 2022
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 38,
@@ -719,7 +732,7 @@ export const productos = [
             isbn: "9789877253016",
             anio: 2023
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 39,
@@ -738,7 +751,7 @@ export const productos = [
             isbn: "9788420650951",
             anio: 2021
         },
-        label: "Clásico"
+        badges: ["Clásico"]
     },
     {
         id: 40,
@@ -757,7 +770,7 @@ export const productos = [
             isbn: "9788408168256",
             anio: 2023
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 41,
@@ -776,7 +789,7 @@ export const productos = [
             isbn: "9788497593671",
             anio: 2022
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 42,
@@ -795,7 +808,7 @@ export const productos = [
             isbn: "9788466658935",
             anio: 2021
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 43,
@@ -814,7 +827,8 @@ export const productos = [
             isbn: "9788466658904",
             anio: 2023
         },
-        label: "Más vendido"
+        badges: ["Más vendido"],
+        cuotasSinInteres: 6
     },
     {
         id: 44,
@@ -833,7 +847,9 @@ export const productos = [
             isbn: "9788433973108",
             anio: 2020
         },
-        label: "Oferta"
+        precioAnterior: 22500,
+        badges: ["Selección destacada"],
+        cuotasSinInteres: 3
     },
     {
         id: 45,
@@ -852,7 +868,7 @@ export const productos = [
             isbn: "9788499922072",
             anio: 2022
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 46,
@@ -871,7 +887,7 @@ export const productos = [
             isbn: "9786070756535",
             anio: 2023
         },
-        label: "Más vendido"
+        badges: ["Más vendido"]
     },
     {
         id: 47,
@@ -890,7 +906,7 @@ export const productos = [
             isbn: "9788424938673",
             anio: 2022
         },
-        label: "Nuevo"
+        badges: ["Nuevo"]
     },
     {
         id: 48,
@@ -909,7 +925,7 @@ export const productos = [
             isbn: "9788437637846",
             anio: 2021
         },
-        label: "Usado"
+        badges: ["Usado"]
     },
     {
         id: 49,
@@ -928,7 +944,7 @@ export const productos = [
             isbn: "9789878191232",
             anio: 2023
         },
-        label: "Edición especial"
+        badges: ["Edición especial"]
     },
     {
         id: 50,
@@ -947,6 +963,6 @@ export const productos = [
             isbn: "9789878190563",
             anio: 2022
         },
-        label: "Novedad"
+        badges: ["Novedad"]
     }
 ];

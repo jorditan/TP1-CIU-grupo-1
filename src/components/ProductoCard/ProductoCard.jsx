@@ -1,77 +1,70 @@
-import { Card, Badge, Button } from "react-bootstrap";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { formatearPrecio } from "../../context/CarritoContext";
+import { Badge, Card } from "react-bootstrap";
+import { formatearPrecio } from "../../utils/formatearPrecio";
+import { esOferta } from "../../utils/productos";
 import styles from "./ProductoCard.module.css";
 
-function ProductoCard({ producto, onAgregar }) {
-  const { id, nombre, autor, categoria, precio, imagen, descripcion, stock } =
-    producto;
-
-  const sinStock = stock <= 0;
-  const urlDetalle = `/productos/${id}`;
+/** Tarjeta enlazada al detalle */
+export default function ProductoCard({ producto }) {
+  const { id, nombre, autor, imagen, precio, precioAnterior, cuotasSinInteres = 0 } = producto;
+  const [imagenFallida, setImagenFallida] = useState(null);
+  const tieneDescuento = precioAnterior > precio;
+  const descuento = tieneDescuento
+    ? Math.round(((precioAnterior - precio) / precioAnterior) * 100)
+    : 0;
+  const badges = [...new Set([
+    ...(esOferta(producto) ? ["Oferta"] : []),
+    ...(producto.label ? [producto.label] : []),
+    ...(producto.badges ?? []),
+  ])];
+  const tieneCuotas = Number.isInteger(cuotasSinInteres) && cuotasSinInteres > 1;
 
   return (
-    <Card className={styles.card}>
-      <Link
-        to={urlDetalle}
-        className={styles.imagenLink}
-        aria-label={`Ver detalle de ${nombre}`}
-      >
+    <Card as={Link} to={`/libro/${id}`} className={styles.card}>
+      {imagen && imagenFallida !== imagen ? (
         <Card.Img
           variant="top"
           src={imagen}
           alt={`Portada de ${nombre}`}
           className={styles.imagen}
-          onError={(e) => {
-            const img = e.currentTarget;
-            if (img.dataset.fallback) return;
-            img.dataset.fallback = "1";
-            img.src = "/img/placeholder.jpg";
-          }}
+          onError={() => setImagenFallida(imagen)}
         />
-      </Link>
+      ) : (
+        <div className={styles.sinImagen}>Portada no disponible</div>
+      )}
       <Card.Body className={styles.body}>
-        <Badge bg="light" text="dark" className={styles.categoria}>
-          {categoria}
-        </Badge>
-        <Link to={urlDetalle} className={styles.tituloLink}>
-          <Card.Title className={styles.titulo}>{nombre}</Card.Title>
-        </Link>
-        <p className={styles.autor}>{autor}</p>
-        <Card.Text className={styles.descripcion}>{descripcion}</Card.Text>
-        <div className={styles.stock}>
-          {sinStock ? (
-            <Badge bg="secondary">Sin stock</Badge>
-          ) : (
-            <span className={styles.stockDisponible}>
-              {stock} {stock === 1 ? "disponible" : "disponibles"}
-            </span>
-          )}
+        <div className={styles.info}>
+          <Card.Title as="h3" className={styles.titulo}>{nombre}</Card.Title>
+          <Card.Text className={styles.autor}>{autor}</Card.Text>
         </div>
-        <div className={styles.pie}>
-          <span className={styles.precio}>{formatearPrecio(precio)}</span>
-          <div className={styles.acciones}>
-            <Button
-              as={Link}
-              to={urlDetalle}
-              variant="outline-secondary"
-              className={styles.boton}
-            >
-              Ver detalle
-            </Button>
-            <Button
-              variant="primary"
-              className={styles.boton}
-              onClick={() => onAgregar(producto)}
-              disabled={sinStock}
-            >
-              Agregar
-            </Button>
+        <div className={styles.precios}>
+          {tieneDescuento && (
+            <div>
+              <span className="visually-hidden">Precio anterior: </span>
+              <del className={styles.precioAnterior}>{formatearPrecio(precioAnterior)}</del>
+            </div>
+          )}
+          <div className={styles.footer}>
+            <span className={styles.precio}>
+              <span className="visually-hidden">Precio actual: </span>
+              {formatearPrecio(precio)}
+            </span>
+            <div className={styles.badges}>
+              {badges.map((badge) => (
+                <Badge key={badge} bg={badge === "Oferta" ? "success" : "secondary"}>
+                  {badge === "Oferta" && descuento > 0 ? `${descuento}% OFF` : badge}
+                </Badge>
+              ))}
+            </div>
           </div>
+          {tieneCuotas && (
+            <Card.Text className={styles.cuotas}>
+              {cuotasSinInteres} cuotas sin interés de {formatearPrecio(precio / cuotasSinInteres)}
+            </Card.Text>
+          )}
         </div>
       </Card.Body>
     </Card>
   );
 }
-
-export default ProductoCard;
