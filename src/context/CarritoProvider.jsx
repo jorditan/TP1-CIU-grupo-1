@@ -1,13 +1,5 @@
-import { createContext, useContext, useState } from "react";
-
-const CarritoContext = createContext(null);
-
-function formatearPrecio(valor) {
-  return valor.toLocaleString("es-AR", {
-    style: "currency",
-    currency: "ARS",
-  });
-}
+import { useState } from "react";
+import { CarritoContext } from "./CarritoContext";
 
 function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
@@ -77,15 +69,5 @@ function CarritoProvider({ children }) {
     </CarritoContext.Provider>
   );
 }
-
-function useCarrito() {
-  const contexto = useContext(CarritoContext);
-  if (!contexto) {
-    throw new Error("useCarrito tiene que usarse dentro de <CarritoProvider>");
-  }
-  return contexto;
-}
-
-export { formatearPrecio, useCarrito };
 
 export default CarritoProvider;

@@ -3,7 +3,7 @@ import Carrusel from "../../components/Carrusel/Carrusel";
 import ProductoCard from "../../components/ProductoCard/ProductoCard";
 import { productos } from "../../data/productos";
 import { esOferta } from "../../utils/productos";
-import { useCarrito } from "../../context/CarritoContext";
+import { useCarrito } from "../../hooks/useCarrito";
 
 function Inicio() {
   const { agregar } = useCarrito();

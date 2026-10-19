@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCarrito, formatearPrecio } from "../context/CarritoContext";
+import { useCarrito } from "../hooks/useCarrito";
+import { formatearPrecio } from "../utils/formatearPrecio";
 import CarritoItem from "../components/CarritoItem";
 import styles from "./Carrito.module.css";
 

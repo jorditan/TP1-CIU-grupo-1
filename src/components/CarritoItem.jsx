@@ -1,4 +1,4 @@
-import { formatearPrecio } from "../context/CarritoContext";
+import { formatearPrecio } from "../utils/formatearPrecio";
 import styles from "./CarritoItem.module.css";
 
 function CarritoItem({ item, onAumentar, onDisminuir, onEliminar }) {

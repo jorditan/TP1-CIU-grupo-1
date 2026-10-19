@@ -5,17 +5,14 @@ import ThemeSelector from "./ThemeSelectors/ThemeSelector";
 import CartButton from "./CartButton/CartButton";
 import styles from "./Navbar.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
-import { productos } from "../../data/productos";
+import { categorias } from "../../utils/productos";
 import { placeholders } from "./placeholders.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme";
-
-const categorias = [
-  ...new Set(productos.map((producto) => producto.categoria)),
-];
 
 export function Navbar() {
   const { theme } = useTheme();
+  const navigate = useNavigate();
   const [placeholder] = useState(
     () => placeholders[Math.floor(Math.random() * placeholders.length)],
   );
@@ -65,7 +62,17 @@ export function Navbar() {
                   className={styles.logo}
                 />
               </Link>
-              <SearchBar placeholder={placeholder} />
+              <SearchBar
+                placeholder={placeholder}
+                onSearch={(valor) => {
+                  const termino = (valor ?? "").trim();
+                  navigate(
+                    termino
+                      ? `/productos?q=${encodeURIComponent(termino)}`
+                      : "/productos",
+                  );
+                }}
+              />
 
               <div className={styles.navActions}>
                 <ThemeSelector />

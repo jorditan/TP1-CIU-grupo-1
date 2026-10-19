@@ -41,3 +41,51 @@
   color: var(--color-text-secondary);
   text-align: center;
 }
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* El SearchBar trae width: 80% y margin-inline: auto para usarse suelto en el
+   navbar. Acá es un item del flex, así que lo dejamos crecer con el resto. */
+.filtros > form {
+  flex: 1 1 260px;
+  width: auto;
+  margin-inline: 0;
+}
+
+.select {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.checkbox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  /* El label envuelve al input, así que el texto también es clickeable */
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}

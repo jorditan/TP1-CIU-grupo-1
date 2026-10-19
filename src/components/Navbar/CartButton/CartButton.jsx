@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useCarrito } from "../../../context/CarritoContext";
+import { useCarrito } from "../../../hooks/useCarrito";
 import styles from "./CartButton.module.css";
 
 function CartButton() {
