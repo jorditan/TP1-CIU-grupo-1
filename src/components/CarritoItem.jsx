@@ -4,8 +4,9 @@ import styles from "./CarritoItem.module.css";
 function CarritoItem({ item, onAumentar, onDisminuir, onEliminar }) {
   if (!item) return null;
 
-  const { id, nombre, precio, cantidad } = item;
+  const { id, nombre, precio, cantidad, stock } = item;
   const subtotal = precio * cantidad;
+  const enElTope = cantidad >= stock;
 
   return (
     <div className={styles.card}>
@@ -42,12 +43,17 @@ function CarritoItem({ item, onAumentar, onDisminuir, onEliminar }) {
             <button
               type="button"
               onClick={() => onAumentar(id)}
+              disabled={enElTope}
               aria-label="Aumentar cantidad"
               className={styles.botonCantidad}
             >
               +
             </button>
           </div>
+
+          {enElTope && (
+            <p className={styles.tope}>Máximo disponible: {stock}</p>
+          )}
 
           <p className={styles.subtotal}>
             Subtotal: <strong>{formatearPrecio(subtotal)}</strong>

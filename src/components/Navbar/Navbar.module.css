@@ -122,6 +122,19 @@
   text-decoration: underline;
 }
 
+/* La flechita del split: abre el menú de categorías sin navegar */
+.categoryCaret {
+  padding: 0 4px;
+  border: 0;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.categoryCaret:hover,
+.categoryCaret:focus-visible {
+  color: var(--color-primary-hover);
+}
+
 .navActions {
   display: flex;
   gap: 1rem;

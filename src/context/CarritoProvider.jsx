@@ -5,12 +5,14 @@ function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
 
   const agregar = (producto) => {
+    if (producto.stock <= 0) return;
+
     setCarrito((anterior) => {
       const existe = anterior.find((item) => item.id === producto.id);
       if (existe) {
         return anterior.map((item) =>
           item.id === producto.id
-            ? { ...item, cantidad: item.cantidad + 1 }
+            ? { ...item, cantidad: Math.min(item.cantidad + 1, item.stock) }
             : item
         );
       }
@@ -21,7 +23,9 @@ function CarritoProvider({ children }) {
   const aumentar = (id) => {
     setCarrito((anterior) =>
       anterior.map((item) =>
-        item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+        item.id === id
+          ? { ...item, cantidad: Math.min(item.cantidad + 1, item.stock) }
+          : item
       )
     );
   };

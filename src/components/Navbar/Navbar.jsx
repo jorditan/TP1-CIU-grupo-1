@@ -5,6 +5,7 @@ import ThemeSelector from "./ThemeSelectors/ThemeSelector";
 import CartButton from "./CartButton/CartButton";
 import styles from "./Navbar.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
 import { categorias } from "../../utils/productos";
 import { placeholders } from "./placeholders.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -84,13 +85,21 @@ export function Navbar() {
             <div className={styles.lowerNavContainer}>
               <ul className={styles.navItems}>
                 <Dropdown as="li" className={styles.navItem}>
-                  <Dropdown.Toggle
-                    id="categorias-dropdown"
+                  <Button
+                    as={Link}
+                    to="/productos"
                     variant="link"
                     className={styles.categoryToggle}
                   >
-                    Categorías
-                  </Dropdown.Toggle>
+                    Libros
+                  </Button>
+                  <Dropdown.Toggle
+                    split
+                    id="categorias-dropdown"
+                    variant="link"
+                    className={styles.categoryCaret}
+                    aria-label="Ver todas las categorías"
+                  />
                   <Dropdown.Menu>
                     {categorias.map((categoria) => (
                       <Dropdown.Item

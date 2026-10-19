@@ -1,0 +1,206 @@
+.seccion {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 32px 16px 64px;
+}
+
+.ficha {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.columnaImagen {
+  min-width: 0;
+}
+
+.imagen,
+.sinImagen {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-primary-light);
+}
+
+.imagen {
+  object-fit: contain;
+}
+
+.sinImagen {
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+}
+
+.columnaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.categoria {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-primary-light);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.titulo {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.autor {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+}
+
+.copete {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.precios {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.precioAnterior {
+  color: var(--color-text-secondary);
+}
+
+.precio {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cuotas {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Reserva la altura del badge para que la ficha no salte entre libros */
+.stock {
+  min-height: 24px;
+}
+
+.stockDisponible {
+  color: var(--color-success);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.boton {
+  flex: 1 1 180px;
+}
+
+.bloques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.bloque {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-surface);
+}
+
+.subtitulo {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.sinopsis {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* El <dl> y los <dd> traen márgenes propios del navegador: los reseteamos */
+.caracteristicas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.caracteristica {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.caracteristica:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.caracteristicaClave {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.caracteristicaValor {
+  margin: 0;
+  color: var(--color-text);
+  text-align: right;
+}
+
+.textoVacio {
+  margin: 0 0 24px;
+  color: var(--color-text-secondary);
+}
+
+/* La ficha son dos bloques con roles distintos, no elementos repetidos:
+   acá sí hace falta un breakpoint. Es el mismo que usa el navbar. */
+@media (max-width: 768px) {
+  .ficha {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .columnaImagen {
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .titulo {
+    font-size: 1.6rem;
+  }
+}

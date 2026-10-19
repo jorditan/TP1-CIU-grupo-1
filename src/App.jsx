@@ -3,6 +3,7 @@ import MainLayout from "./pages/MainLayout.jsx";
 import Inicio from "./pages/inicio/Inicio.jsx";
 import Carrito from "./pages/Carrito.jsx";
 import Productos from "./pages/Productos.jsx";
+import DetalleProducto from "./pages/DetalleProducto.jsx";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="*" element={<p>Página no encontrada</p>} />
           <Route path="/productos" element={<Productos />} />
-          <Route path="/productos/:id" element={<p>Detalle del producto</p>} />
+          <Route path="/productos/:id" element={<DetalleProducto />} />
         </Route>
       </Routes>
     </>
