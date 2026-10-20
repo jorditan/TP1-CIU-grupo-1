@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCarrito } from "../hooks/useCarrito";
-import { formatearPrecio } from "../utils/formatearPrecio";
-import CarritoItem from "../components/CarritoItem";
+import { useCarrito } from "../../hooks/useCarrito";
+import { formatearPrecio } from "../../utils/formatearPrecio";
+import CarritoItem from "../../components/CarritoItem";
 import styles from "./Carrito.module.css";
+import { Button } from "react-bootstrap"
 
 function Carrito() {
   const {
@@ -50,22 +51,23 @@ function Carrito() {
             <p className={styles.textoResumen}>
               Cantidad total de productos: <strong>{totalProductos}</strong>
             </p>
-            
+
             <p className={styles.total}>
               Total general: <strong>{formatearPrecio(total)}</strong>
             </p>
 
             <div className={styles.acciones}>
-              <button type="button" onClick={vaciar} className={styles.vaciar}>
+              <Button type="button" variant="danger" onClick={vaciar}>
                 Vaciar carrito
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="primary"
                 type="button"
                 onClick={handleConfirmar}
                 className={styles.botonConfirmar}
               >
                 Confirmar compra
-              </button>
+              </Button>
             </div>
           </div>
         </div>

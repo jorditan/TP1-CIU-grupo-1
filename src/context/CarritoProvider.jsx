@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { CarritoContext } from "./CarritoContext";
 
 function CarritoProvider({ children }) {
@@ -6,6 +7,12 @@ function CarritoProvider({ children }) {
 
   const agregar = (producto) => {
     if (producto.stock <= 0) return;
+
+    const existente = carrito.find((item) => item.id === producto.id);
+    if (existente && existente.cantidad >= producto.stock) {
+      toast.error(`Alcanzaste el stock máximo de "${producto.nombre}"`);
+      return;
+    }
 
     setCarrito((anterior) => {
       const existe = anterior.find((item) => item.id === producto.id);
@@ -16,8 +23,11 @@ function CarritoProvider({ children }) {
             : item
         );
       }
+
       return [...anterior, { ...producto, cantidad: 1 }];
     });
+
+    toast.success(`"${producto.nombre}" añadido al carrito`);
   };
 
   const aumentar = (id) => {
@@ -41,7 +51,11 @@ function CarritoProvider({ children }) {
   };
 
   const eliminar = (id) => {
+    const productoEliminado = carrito.find((item) => item.id === id);
     setCarrito((anterior) => anterior.filter((item) => item.id !== id));
+    if (productoEliminado) {
+      toast.error(`"${productoEliminado.nombre}" eliminado del carrito`);
+    }
   };
 
   const vaciar = () => setCarrito([]);

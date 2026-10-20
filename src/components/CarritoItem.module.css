@@ -12,8 +12,29 @@
 
 .contenido {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
+}
+
+.imagenContainer {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .encabezado {
@@ -28,20 +49,6 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: #1f2a26;
-}
-
-.eliminar {
-  padding: 0;
-  border: none;
-  background: none;
-  color: #c0623b;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.eliminar:hover {
-  text-decoration: underline;
 }
 
 .precioUnitario {
@@ -77,7 +84,9 @@
   color: #244a3f;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .botonCantidad:hover:not(:disabled) {

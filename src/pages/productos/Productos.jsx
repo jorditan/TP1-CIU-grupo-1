@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { productos } from "../data/productos";
-import { categorias } from "../utils/productos";
-import { normalizarTexto } from "../utils/texto";
-import { useCarrito } from "../hooks/useCarrito";
-import ProductoCard from "../components/ProductoCard/ProductoCard";
-import SearchBar from "../components/Searchbar/Searchbar";
+import { productos } from "../../data/productos";
+import { categorias } from "../../utils/productos";
+import { normalizarTexto } from "../../utils/texto";
+import { useCarrito } from "../../hooks/useCarrito";
+import ProductoCard from "../../components/ProductoCard/ProductoCard";
+import SearchBar from "../../components/Searchbar/Searchbar";
 import styles from "./Productos.module.css";
 
 function Productos() {
