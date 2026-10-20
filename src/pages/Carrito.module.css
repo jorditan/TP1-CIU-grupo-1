@@ -1,0 +1,153 @@
+.seccion {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.titulo {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #244a3f;
+}
+
+.vacio {
+  padding: 40px 16px;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #e3e0d8;
+  border-radius: 10px;
+}
+
+.textoVacio {
+  margin-bottom: 16px;
+  color: #6b6f6c;
+}
+
+.botonLink {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: #73877b;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.botonLink:hover {
+  background-color: #5f7468;
+  color: #ffffff;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e3e0d8;
+  border-radius: 10px;
+}
+
+.textoResumen {
+  margin: 0;
+  color: #6b6f6c;
+}
+
+.total {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #1f2a26;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.vaciar {
+  padding: 10px 20px;
+  border: 1px solid #c0623b;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #c0623b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.vaciar:hover {
+  background-color: #c0623b;
+  color: #ffffff;
+}
+
+.botonConfirmar {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #244a3f;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.botonConfirmar:hover {
+  background-color: #1a3830;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(36, 74, 63, 0.6);
+}
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  text-align: center;
+  background-color: #f8f6f1;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modalTitulo {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  color: #244a3f;
+}
+
+.modalTexto {
+  margin-bottom: 24px;
+  color: #6b6f6c;
+}
+
+.botonCerrar {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: #73877b;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.botonCerrar:hover {
+  background-color: #5f7468;
+}
