@@ -21,6 +21,7 @@
   --color-success: #287a54;
   --color-error: #c2413b;
 
+  --bs-primary: var(--color-primary);
   --bs-body-color: var(--color-text);
   --bs-body-bg: var(--color-background);
   --bs-secondary-color: var(--color-text-secondary);
@@ -68,15 +69,38 @@ body {
   --bs-dropdown-link-disabled-color: var(--color-text-secondary);
 }
 
-.btn-outline-secondary {
-  --bs-btn-color: var(--color-text-secondary);
-  --bs-btn-border-color: var(--color-border);
+/* Customizamos los colores de boostrap para que no sean siempre azules.  */
+
+.btn-primary {
+  --bs-btn-color: var(--color-background);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
   --bs-btn-hover-color: var(--color-background);
-  --bs-btn-hover-bg: var(--color-primary);
-  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: var(--color-primary-hover);
   --bs-btn-active-color: var(--color-background);
   --bs-btn-active-bg: var(--color-primary-hover);
   --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-disabled-color: var(--color-background);
+  --bs-btn-disabled-bg: var(--color-primary);
+  --bs-btn-disabled-border-color: var(--color-primary);
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--color-surface);
+  --bs-btn-disabled-bg: var(--color-surface);
+}
+
+.btn-secondary,
+.btn-outline-secondary {
+  --bs-btn-color: var(--color-text-secondary);
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-primary-light);
+  --bs-btn-hover-border-color: var(--color-border);
+  --bs-btn-active-color: var(--color-text);
+  --bs-btn-active-bg: var(--color-primary-light);
+  --bs-btn-active-border-color: var(--color-primary);
   --bs-btn-disabled-color: var(--color-text-secondary);
   --bs-btn-disabled-border-color: var(--color-border);
 }

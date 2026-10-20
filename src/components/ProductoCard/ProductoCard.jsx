@@ -17,7 +17,6 @@ export default function ProductoCard({ producto, onAgregar }) {
     precio,
     precioAnterior,
     stock,
-    cuotasSinInteres = 0,
   } = producto;
   const [imagenFallida, setImagenFallida] = useState(null);
   const sinStock = stock <= 0;
@@ -26,12 +25,7 @@ export default function ProductoCard({ producto, onAgregar }) {
   const descuento = tieneDescuento
     ? Math.round(((precioAnterior - precio) / precioAnterior) * 100)
     : 0;
-  const badges = [...new Set([
-    ...(esOferta(producto) ? ["Oferta"] : []),
-    ...(producto.label ? [producto.label] : []),
-    ...(producto.badges ?? []),
-  ])];
-  const tieneCuotas = Number.isInteger(cuotasSinInteres) && cuotasSinInteres > 1;
+  const enOferta = esOferta(producto);
 
   return (
     <Card className={styles.card}>
@@ -53,12 +47,22 @@ export default function ProductoCard({ producto, onAgregar }) {
         )}
       </Link>
       <Card.Body className={styles.body}>
-        <div className={styles.info}>
+        <div className={styles.header}>
           {categoria && (
             <Badge bg="light" text="dark" className={styles.categoria}>
               {categoria}
             </Badge>
           )}
+          {sinStock ? (
+            <Badge bg="secondary">Sin stock</Badge>
+          ) : (
+            <span className={styles.stockDisponible}>
+              {stock} {stock === 1 ? "disponible" : "disponibles"}
+            </span>
+          )}
+        </div>
+        <div className={styles.info}>
+
           <Card.Title as="h3" className={styles.titulo}>
             <Link to={urlDetalle} className={styles.tituloLink}>
               {nombre}
@@ -81,32 +85,12 @@ export default function ProductoCard({ producto, onAgregar }) {
               <span className="visually-hidden">Precio actual: </span>
               {formatearPrecio(precio)}
             </span>
-            <div className={styles.badges}>
-              {badges.map((badge) => (
-                <Badge
-                  key={badge}
-                  bg={badge === "Oferta" ? "success" : "secondary"}
-                >
-                  {badge === "Oferta" && descuento > 0 ? `${descuento}% OFF` : badge}
-                </Badge>
-              ))}
-            </div>
+            {enOferta && (
+              <Badge bg="success">
+                {descuento > 0 ? `${descuento}% OFF` : "Oferta"}
+              </Badge>
+            )}
           </div>
-          {tieneCuotas && (
-            <Card.Text className={styles.cuotas}>
-              {cuotasSinInteres} cuotas sin interés de{" "}
-              {formatearPrecio(precio / cuotasSinInteres)}
-            </Card.Text>
-          )}
-        </div>
-        <div className={styles.stock}>
-          {sinStock ? (
-            <Badge bg="secondary">Sin stock</Badge>
-          ) : (
-            <span className={styles.stockDisponible}>
-              {stock} {stock === 1 ? "disponible" : "disponibles"}
-            </span>
-          )}
         </div>
         <div className={styles.acciones}>
           <Button

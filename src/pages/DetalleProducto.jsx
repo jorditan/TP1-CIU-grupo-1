@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Badge, Button } from "react-bootstrap";
+import { Badge, Button, Breadcrumb } from "react-bootstrap";
 import { productos } from "../data/productos";
 import { esOferta } from "../utils/productos";
 import { formatearPrecio } from "../utils/formatearPrecio";
@@ -70,6 +70,13 @@ function DetalleProducto() {
 
   return (
     <section className={styles.seccion}>
+      <Breadcrumb>
+        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+          Library
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>Data</Breadcrumb.Item>
+      </Breadcrumb>
       <div className={styles.ficha}>
         <div className={styles.columnaImagen}>
           {imagen && imagenFallida !== imagen ? (
