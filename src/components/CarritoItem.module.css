@@ -1,0 +1,108 @@
+.card {
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e3e0d8;
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px rgba(36, 74, 63, 0.12);
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.encabezado {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nombre {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2a26;
+}
+
+.eliminar {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #c0623b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.eliminar:hover {
+  text-decoration: underline;
+}
+
+.precioUnitario {
+  margin: 0;
+  color: #6b6f6c;
+}
+
+.precioUnitario strong {
+  color: #1f2a26;
+}
+
+.pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e3e0d8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.botonCantidad {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: #f8f6f1;
+  color: #244a3f;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.botonCantidad:hover:not(:disabled) {
+  background-color: #73877b;
+  color: #ffffff;
+}
+
+.botonCantidad:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cantidad {
+  min-width: 44px;
+  text-align: center;
+  font-weight: 600;
+  color: #1f2a26;
+}
+
+.subtotal {
+  margin: 0;
+  color: #6b6f6c;
+}
+
+.subtotal strong {
+  font-size: 1.1rem;
+  color: #244a3f;
+}
