@@ -25,7 +25,9 @@ function Footer() {
               <ul>
                 {item.subcategories.map((subcategory, subIndex) => (
                   <li key={subIndex}>
-                    <a className={styles.footerLink} href={subcategory.href}>{subcategory.name}</a>
+                    <Link to={subcategory.href} className={styles.footerLink}>
+                      {subcategory.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

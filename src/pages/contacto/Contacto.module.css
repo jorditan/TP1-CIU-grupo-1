@@ -1,24 +1,95 @@
-.seccion {
-    max-width: 1380px;
-    min-height: 100vh;
-    margin-inline: auto;
-    padding: 32px 16px 64px;
+﻿.seccion {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 32px 16px 64px;
 }
 
 .titulo {
-    margin-bottom: 24px;
-    font-size: 1.8rem;
-    font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-input {
-    border: 3px solid black;
-    border-radius: 10px;
-    margin: 20px 0;
-    width: 100%;
-    padding: 16px;
+.formulario {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
 }
 
-input:hover {
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.94);
+.campo {
+  min-width: 0;
+}
+
+.campo label {
+  font-weight: 600;
+}
+
+/* Form.Control aporta los estilos de Bootstrap. Solo adaptamos los colores
+   al tema compartido del sitio para que también respondan al modo oscuro. */
+.campo input,
+.campo textarea {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* Reemplazamos el foco azul de Bootstrap por el verde de la marca. */
+.campo input:focus,
+.campo textarea:focus {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem
+    color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+.ayuda {
+  display: block;
+}
+
+.boton {
+  width: 100%;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* El Button primary usa el tema de App.css. El outline se adapta aquí
+   mediante las variables de Bootstrap para cubrir hover, active y disabled. */
+.acciones .limpiar {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-background);
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-active-color: var(--color-background);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-disabled-color: var(--color-primary);
+  --bs-btn-disabled-border-color: var(--color-primary);
+}
+
+.acciones button:focus-visible {
+  box-shadow: 0 0 0 0.25rem
+    color-mix(in srgb, var(--color-primary) 25%, transparent);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.estado {
+  color: var(--color-success);
+  overflow-wrap: anywhere;
 }
