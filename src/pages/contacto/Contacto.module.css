@@ -1,5 +1,5 @@
 .seccion {
-    max-width: 1280px;
+    max-width: 1380px;
     min-height: 100vh;
     margin-inline: auto;
     padding: 32px 16px 64px;
@@ -9,4 +9,16 @@
     margin-bottom: 24px;
     font-size: 1.8rem;
     font-weight: 700;
+}
+
+input {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+    padding: 16px;
+}
+
+input:hover {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.94);
 }
