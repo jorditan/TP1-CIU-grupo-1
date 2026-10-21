@@ -1,0 +1,12 @@
+.seccion {
+    max-width: 1280px;
+    min-height: 100vh;
+    margin-inline: auto;
+    padding: 32px 16px 64px;
+}
+
+.titulo {
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
