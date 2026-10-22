@@ -19,6 +19,7 @@
 .lowerNavbar {
   max-height: 50px;
   opacity: 1;
+  overflow: scroll;
   /* La animación para que cuando se oculte no se corte muy bruscamente */
   transition:
     max-height 0.25s ease,
@@ -87,7 +88,6 @@
   text-decoration: none;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap;
   list-style: none;
 }
 
@@ -150,5 +150,12 @@
   .upperNavContainer > :nth-child(2) {
     grid-column: 1 / -1;
     grid-row: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .navItem {
+    font-size: 0.875rem;
+    width: max-content;
   }
 }

@@ -1,14 +1,9 @@
 .cardsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(0, 18rem));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16px;
   background-color: var(--color-background);
-}
-
-@media (max-width: 360px) {
-  .cardsContainer {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .sectionTitle {
@@ -19,4 +14,10 @@
 .cardsSection {
   padding: 3rem;
   background-color: var(--color-background);
+}
+
+@media (max-width: 575.98px) {
+  .cardsSection {
+    padding: 3rem 1rem;
+  }
 }

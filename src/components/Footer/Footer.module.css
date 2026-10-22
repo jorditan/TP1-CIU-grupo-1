@@ -67,3 +67,10 @@ hr {
   color: var(--color-muted-foreground);
   font-size: 0.9rem;
 }
+
+@media (max-width: 500px) {
+  .footerLower {
+    display: flex;
+    flex-direction: column;
+  }
+}

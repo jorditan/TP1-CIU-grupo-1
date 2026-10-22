@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-
-import SearchBar from "../Searchbar/Searchbar";
-import ThemeSelector from "./ThemeSelectors/ThemeSelector";
-import CartButton from "./CartButton/CartButton";
-import styles from "./Navbar.module.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
 import { categorias } from "../../utils/productos";
 import { placeholders } from "./placeholders.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme";
+
+
+import SearchBar from "../Searchbar/Searchbar";
+import { Button } from "react-bootstrap";
+import ThemeSelector from "./ThemeSelectors/ThemeSelector";
+import CartButton from "./CartButton/CartButton";
+import styles from "./Navbar.module.css";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export function Navbar() {
   const { theme } = useTheme();
