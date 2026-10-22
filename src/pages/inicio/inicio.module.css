@@ -1,3 +1,23 @@
+.homeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+  background-color: var(--color-background);
+}
+
+@media (max-width: 575.98px) {
+  .homeSection {
+    padding: 3rem 1rem;
+  }
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .cardsContainer {
   display: flex;
   flex-direction: row;
@@ -6,18 +26,22 @@
   background-color: var(--color-background);
 }
 
+hr {
+  border: 1px solid var(--color-border);
+}
+
 .sectionTitle {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.cardsSection {
-  padding: 3rem;
-  background-color: var(--color-background);
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 @media (max-width: 575.98px) {
-  .cardsSection {
-    padding: 3rem 1rem;
+  .sectionTitle {
+    font-size: 1.25rem;
   }
 }

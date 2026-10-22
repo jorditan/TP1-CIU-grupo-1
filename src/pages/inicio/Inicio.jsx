@@ -11,17 +11,43 @@ function Inicio() {
   return (
     <>
       <Carrusel />
-      <section className={style.cardsSection}>
-        <h2 className={style.sectionTitle}>Libros en oferta</h2>
-        <div className={style.cardsContainer}>
-          {offerBooks.map((book) => (
-            <ProductoCard
-              key={book.id}
-              producto={book}
-              onAgregar={agregar}
-            />
-          ))}
-        </div>
+      <section className={style.homeSection}>
+        <article className={style.rowContainer}>
+          <h2 className={style.sectionTitle}>Libros en oferta</h2>
+          <div className={style.cardsContainer}>
+            {offerBooks.map((book) => (
+              <ProductoCard
+                key={book.id}
+                producto={book}
+                onAgregar={agregar}
+              />
+            ))}
+          </div>
+          <hr></hr>
+        </article>
+
+        <article className={style.rowContainer}>
+          <h2 className={style.sectionTitle}>Nuevos ingresos</h2>
+          <div className={style.cardsContainer}>
+            {offerBooks.map((book) => (
+              <ProductoCard
+                key={book.id}
+                producto={book}
+                onAgregar={agregar}
+              />
+            ))}
+          </div>
+          <hr></hr>
+        </article>
+
+        <article className={style.rowContainer}>
+          <h2 className={style.sectionTitle}>Conocé nuestras categorías</h2>
+          <hr></hr>
+        </article>
+
+        <article className={style.rowContainer}>
+
+        </article>
       </section>
     </>
   );

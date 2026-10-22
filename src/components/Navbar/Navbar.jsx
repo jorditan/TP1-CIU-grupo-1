@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { categorias } from "../../utils/productos";
 import { placeholders } from "./placeholders.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,12 +21,14 @@ export function Navbar() {
   );
 
   const [lowerNavVisible, setLowerNavVisible] = useState(true);
+  const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
 
   useEffect(() => {
     // Este es el useeffect que maneja el scroll del navar. Si se scrollea para abajo, la parte de categorias, ofertas y etc se oculta. Es para ahorrar espacio al usuario
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setLowerNavVisible(false);
+        setCategoriasAbiertas(false);
       } else if (window.scrollY < 5) {
         setLowerNavVisible(true);
       }
@@ -83,9 +86,17 @@ export function Navbar() {
             </div>
           </div>
           <div className={`${styles.lowerNavbar} ${!lowerNavVisible ? styles.lowerHidden : ""}`}>
-            <div className={styles.lowerNavContainer}>
+            <div
+              className={styles.lowerNavContainer}
+              onScroll={() => setCategoriasAbiertas(false)}
+            >
               <ul className={styles.navItems}>
-                <Dropdown as="li" className={styles.navItem}>
+                <Dropdown
+                  as="li"
+                  className={styles.navItem}
+                  show={categoriasAbiertas}
+                  onToggle={setCategoriasAbiertas}
+                >
                   <Button
                     as={Link}
                     to="/productos"
@@ -101,17 +112,24 @@ export function Navbar() {
                     className={styles.categoryCaret}
                     aria-label="Ver todas las categorías"
                   />
-                  <Dropdown.Menu>
-                    {categorias.map((categoria) => (
-                      <Dropdown.Item
-                        as={Link}
-                        key={categoria}
-                        to={`/productos?categoria=${encodeURIComponent(categoria)}`}
-                      >
-                        {categoria}
-                      </Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
+                  {/* El portal evita que el scroll horizontal recorte el menú. */}
+                  {createPortal(
+                    <Dropdown.Menu
+                      className={styles.categoryMenu}
+                      popperConfig={{ strategy: "fixed" }}
+                    >
+                      {categorias.map((categoria) => (
+                        <Dropdown.Item
+                          as={Link}
+                          key={categoria}
+                          to={`/productos?categoria=${encodeURIComponent(categoria)}`}
+                        >
+                          {categoria}
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>,
+                    document.body,
+                  )}
                 </Dropdown>
                 {items.map((item) => {
                   return (
