@@ -4,6 +4,7 @@ import ProductoCard from "../../components/ProductoCard/ProductoCard";
 import { productos } from "../../data/productos";
 import { esOferta } from "../../utils/productos";
 import { useCarrito } from "../../hooks/useCarrito";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 
 function Inicio() {
   const { agregar } = useCarrito();
@@ -42,13 +43,19 @@ function Inicio() {
 
         <article className={style.rowContainer}>
           <h2 className={style.sectionTitle}>Conocé nuestras categorías</h2>
+          <div className={style.categoriasContainer}>
+            <CategoryCard nombreCategoria="Ficción" />
+            <CategoryCard nombreCategoria="No Ficción" />
+            <CategoryCard nombreCategoria="Ciencia" />
+            <CategoryCard nombreCategoria="Historia" />
+          </div>
           <hr></hr>
         </article>
 
         <article className={style.rowContainer}>
 
         </article>
-      </section>
+      </section >
     </>
   );
 }

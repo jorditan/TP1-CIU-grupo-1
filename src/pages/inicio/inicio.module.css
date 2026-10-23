@@ -45,3 +45,9 @@ hr {
     font-size: 1.25rem;
   }
 }
+
+.categoriasContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
