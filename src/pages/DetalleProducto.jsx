@@ -70,12 +70,14 @@ function DetalleProducto() {
 
   return (
     <section className={styles.seccion}>
-      <Breadcrumb>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-          Library
+      <Breadcrumb aria-label="Ruta de navegación">
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
+          Inicio
         </Breadcrumb.Item>
-        <Breadcrumb.Item active>Data</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/productos" }}>
+          Libros
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>{nombre}</Breadcrumb.Item>
       </Breadcrumb>
       <div className={styles.ficha}>
         <div className={styles.columnaImagen}>

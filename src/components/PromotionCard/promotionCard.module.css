@@ -1,0 +1,26 @@
+.card {
+  --bs-card-bg: var(--color-surface);
+  --bs-card-border-color: var(--color-border);
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.diasContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dia {
+  background-color: var(--color-primary-light);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}

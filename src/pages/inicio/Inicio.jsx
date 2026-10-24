@@ -1,14 +1,21 @@
 import style from "./inicio.module.css";
 import Carrusel from "../../components/Carrusel/Carrusel";
 import ProductoCard from "../../components/ProductoCard/ProductoCard";
-import { productos } from "../../data/productos";
+import { productos, categoriasProductos, promociones } from "../../data/index.js";
 import { esOferta } from "../../utils/productos";
 import { useCarrito } from "../../hooks/useCarrito";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import PromotionCard from "../../components/PromotionCard/PromotionCard.jsx";
 
 function Inicio() {
   const { agregar } = useCarrito();
-  const offerBooks = productos.filter(esOferta);
+
+  const librosEnOferta = productos.filter(esOferta);
+  const librosNuevos = productos.filter((producto) => producto.badges.includes("Nuevo"));
+
+  const nuevosIngresos = librosNuevos.slice(0, 6);
+  const categorias = categoriasProductos.slice(0, 6); // Con esto tomamos solo 6 categorias, faltaría hacerlo aleatorio.
+
   return (
     <>
       <Carrusel />
@@ -16,7 +23,7 @@ function Inicio() {
         <article className={style.rowContainer}>
           <h2 className={style.sectionTitle}>Libros en oferta</h2>
           <div className={style.cardsContainer}>
-            {offerBooks.map((book) => (
+            {librosEnOferta.map((book) => (
               <ProductoCard
                 key={book.id}
                 producto={book}
@@ -28,9 +35,25 @@ function Inicio() {
         </article>
 
         <article className={style.rowContainer}>
+          <h2 className={style.sectionTitle}>Promociones disponibles</h2>
+          <div className={style.promocionContainer}>
+            {promociones.map((promo) => (
+              <PromotionCard
+                key={promo.id}
+                logo={promo.logo}
+                banco={promo.banco}
+                descripcion={promo.descripcion}
+                dias={promo.dias}
+              />
+            ))}
+          </div>
+          <hr></hr>
+        </article>
+
+        <article className={style.rowContainer}>
           <h2 className={style.sectionTitle}>Nuevos ingresos</h2>
           <div className={style.cardsContainer}>
-            {offerBooks.map((book) => (
+            {nuevosIngresos.map((book) => (
               <ProductoCard
                 key={book.id}
                 producto={book}
@@ -44,10 +67,17 @@ function Inicio() {
         <article className={style.rowContainer}>
           <h2 className={style.sectionTitle}>Conocé nuestras categorías</h2>
           <div className={style.categoriasContainer}>
-            <CategoryCard nombreCategoria="Ficción" />
-            <CategoryCard nombreCategoria="No Ficción" />
-            <CategoryCard nombreCategoria="Ciencia" />
-            <CategoryCard nombreCategoria="Historia" />
+            {
+              categorias.map((categoria) => (
+                <CategoryCard
+                  key={categoria.id}
+                  nombreCategoria={categoria.categoria}
+                  imagenCategoria={categoria.imagen}
+                  descripcionCategoria={categoria.descripcion}
+                  linkCategoria={`/productos?categoria=${encodeURIComponent(categoria.categoria)}`}
+                />
+              ))
+            }
           </div>
           <hr></hr>
         </article>

@@ -1,8 +1,39 @@
 .categoryCard {
-  border: 1px solid #ccc;
+  border: 1px solid var(--bs-primary);
   border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-text-terciary);
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.categoryCard img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.categoryCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: var(--bs-primary);
+}
+
+.categoryCard:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.categoryCard:hover img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transform: scale(1.06);
 }
