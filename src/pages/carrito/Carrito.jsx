@@ -4,7 +4,7 @@ import { useCarrito } from "../../hooks/useCarrito";
 import { formatearPrecio } from "../../utils/formatearPrecio";
 import ItemCarrito from "../../components/ItemCarrito/ItemCarrito";
 import styles from "./Carrito.module.css";
-import { Button } from "react-bootstrap"
+import { Button } from "react-bootstrap";
 
 function Carrito() {
   const {
@@ -24,6 +24,12 @@ function Carrito() {
     vaciar();
   };
 
+  const handleVaciar = () => {
+    if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
+      vaciar();
+    }
+  };
+
   return (
     <section className={styles.seccion}>
       <h1 className={styles.titulo}>Carrito de compras</h1>
@@ -31,35 +37,37 @@ function Carrito() {
       {carrito.length === 0 ? (
         <div className={styles.vacio}>
           <p className={styles.textoVacio}>Tu carrito está vacío.</p>
-          <Link to="/" className={styles.botonLink}>
+          <Link to="/productos" className={styles.botonLink}>
             Ver productos
           </Link>
         </div>
       ) : (
-        <div className={styles.lista}>
-          {carrito.map((item) => (
-            <ItemCarrito
-              key={item.id}
-              item={item}
-              onAumentar={aumentar}
-              onDisminuir={disminuir}
-              onEliminar={eliminar}
-            />
-          ))}
+        <div className={styles.contenido}>
+          <div className={styles.lista}>
+            {carrito.map((item) => (
+              <ItemCarrito
+                key={item.id}
+                item={item}
+                onAumentar={aumentar}
+                onDisminuir={disminuir}
+                onEliminar={eliminar}
+              />
+            ))}
+          </div>
 
-          <div className={styles.resumen}>
+          <aside className={styles.resumen} aria-label="Resumen de compra">
+            <h2 className={styles.tituloResumen}>Resumen</h2>
+
             <p className={styles.textoResumen}>
-              Cantidad total de productos: <strong>{totalProductos}</strong>
+              Cantidad de productos: <strong>{totalProductos}</strong>
             </p>
 
             <p className={styles.total}>
-              Total general: <strong>{formatearPrecio(total)}</strong>
+              <span>Total</span>
+              <strong>{formatearPrecio(total)}</strong>
             </p>
 
             <div className={styles.acciones}>
-              <Button type="button" variant="danger" onClick={vaciar}>
-                Vaciar carrito
-              </Button>
               <Button
                 variant="primary"
                 type="button"
@@ -68,8 +76,15 @@ function Carrito() {
               >
                 Confirmar compra
               </Button>
+              <Button
+                type="button"
+                variant="outline-danger"
+                onClick={handleVaciar}
+              >
+                Vaciar carrito
+              </Button>
             </div>
-          </div>
+          </aside>
         </div>
       )}
 

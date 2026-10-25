@@ -1,40 +1,39 @@
 .card {
-  padding: 16px;
-  background-color: #ffffff;
-  border: 1px solid #e3e0d8;
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   transition: box-shadow 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 4px 14px rgba(36, 74, 63, 0.12);
-}
-
-.contenido {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
+  box-shadow: 0 4px 14px rgb(36 72 61 / 0.12);
 }
 
 .imagenContainer {
-  width: 140px;
-  height: 140px;
+  width: 84px;
+  height: 120px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 6px;
+  background-color: var(--color-background);
   overflow: hidden;
 }
 
 .imagen {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .detalles {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
 
 .encabezado {
@@ -44,44 +43,87 @@
   gap: 12px;
 }
 
+.titulos {
+  min-width: 0;
+}
+
 .nombre {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  color: #1f2a26;
 }
 
-.precioUnitario {
-  margin: 0;
-  color: #6b6f6c;
+.nombreLink {
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-.precioUnitario strong {
-  color: #1f2a26;
+.nombreLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.autor {
+  margin: 2px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.botonEliminar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.botonEliminar:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-error);
+}
+
+.botonEliminar:focus-visible,
+.botonCantidad:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .pie {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cantidadContainer {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
 .controles {
   display: flex;
   align-items: center;
-  border: 1px solid #e3e0d8;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .botonCantidad {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border: none;
-  background-color: #f8f6f1;
-  color: #244a3f;
+  background-color: var(--color-background);
+  color: var(--color-primary);
   font-size: 1.2rem;
   cursor: pointer;
   transition:
@@ -90,8 +132,8 @@
 }
 
 .botonCantidad:hover:not(:disabled) {
-  background-color: #73877b;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }
 
 .botonCantidad:disabled {
@@ -100,18 +142,42 @@
 }
 
 .cantidad {
-  min-width: 44px;
+  min-width: 40px;
   text-align: center;
   font-weight: 600;
-  color: #1f2a26;
+  color: var(--color-text);
+}
+
+.tope {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.precios {
+  text-align: right;
+}
+
+.precioUnitario {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
 }
 
 .subtotal {
   margin: 0;
-  color: #6b6f6c;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
-.subtotal strong {
-  font-size: 1.1rem;
-  color: #244a3f;
+@media (max-width: 575.98px) {
+  .imagenContainer {
+    width: 64px;
+    height: 92px;
+  }
+
+  .card {
+    gap: 12px;
+  }
 }
