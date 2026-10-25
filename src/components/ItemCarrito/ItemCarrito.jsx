@@ -1,8 +1,8 @@
-import { formatearPrecio } from "../utils/formatearPrecio";
+import { formatearPrecio } from "../../utils/formatearPrecio";
 import { Button } from "react-bootstrap";
-import styles from "./CarritoItem.module.css";
+import styles from "./ItemCarrito.module.css";
 
-function CarritoItem({ item, onAumentar, onDisminuir, onEliminar }) {
+function ItemCarrito({ item, onAumentar, onDisminuir, onEliminar }) {
   if (!item) return null;
 
   const { id, nombre, precio, cantidad, stock, imagen } = item;
@@ -75,4 +75,4 @@ function CarritoItem({ item, onAumentar, onDisminuir, onEliminar }) {
   );
 }
 
-export default CarritoItem;
+export default ItemCarrito;

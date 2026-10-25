@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCarrito } from "../../hooks/useCarrito";
 import { formatearPrecio } from "../../utils/formatearPrecio";
-import CarritoItem from "../../components/CarritoItem";
+import ItemCarrito from "../../components/ItemCarrito/ItemCarrito";
 import styles from "./Carrito.module.css";
 import { Button } from "react-bootstrap"
 
@@ -38,7 +38,7 @@ function Carrito() {
       ) : (
         <div className={styles.lista}>
           {carrito.map((item) => (
-            <CarritoItem
+            <ItemCarrito
               key={item.id}
               item={item}
               onAumentar={aumentar}

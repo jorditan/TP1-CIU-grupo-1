@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import styles from './CategoryCard.module.css';
+import styles from './CategoriaCard.module.css';
 
-function CategoryCard({ nombreCategoria, descripcionCategoria, imagenCategoria, linkCategoria }) {
+function CategoriaCard({ nombreCategoria, descripcionCategoria, imagenCategoria, linkCategoria }) {
   return (
     <Card className="bg-dark text-white">
       <Link to={linkCategoria} className={styles.categoryCard}>
@@ -20,4 +20,4 @@ function CategoryCard({ nombreCategoria, descripcionCategoria, imagenCategoria, 
   );
 }
 
-export default CategoryCard;
+export default CategoriaCard;

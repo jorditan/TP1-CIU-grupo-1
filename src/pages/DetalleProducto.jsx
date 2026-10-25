@@ -4,7 +4,7 @@ import { Badge, Button, Breadcrumb } from "react-bootstrap";
 import { productos } from "../data/productos";
 import { esOferta } from "../utils/productos";
 import { formatearPrecio } from "../utils/formatearPrecio";
-import { useCarrito } from "../hooks/useCarrito";
+import AgregarAlCarrito from "../components/AgregarAlCarrito/AgregarAlCarrito";
 import styles from "./DetalleProducto.module.css";
 
 // Traduce las claves técnicas de caracteristicas y fija el orden en pantalla.
@@ -18,7 +18,6 @@ const etiquetas = {
 
 function DetalleProducto() {
   const { id } = useParams();
-  const { agregar } = useCarrito();
   const [imagenFallida, setImagenFallida] = useState(null);
 
   // Al cambiar de libro el navegador conserva el scroll: lo subimos a mano.
@@ -146,14 +145,12 @@ function DetalleProducto() {
           </div>
 
           <div className={styles.acciones}>
-            <Button
-              variant="primary"
+            <AgregarAlCarrito
+              key={producto.id}
+              producto={producto}
               className={styles.boton}
-              onClick={() => agregar(producto)}
-              disabled={sinStock}
-            >
-              Agregar al carrito
-            </Button>
+              texto="Agregar al carrito"
+            />
             <Button
               as={Link}
               to="/productos"

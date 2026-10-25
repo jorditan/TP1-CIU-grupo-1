@@ -13,6 +13,8 @@ npm run lint
 
 ## Estructura
 
+Los archivos propios del proyecto se nombran en español, sin tildes y con el mismo nombre para el componente y su CSS Module (por ejemplo, `PromocionCard.jsx` y `PromocionCard.module.css`). Se conservan `Card`, `Navbar` y `Footer`, el prefijo `use` de los hooks y los nombres convencionales de entrada y configuración (`App`, `main`, `index`, etc.). Las carpetas de componentes acompañan el nombre del componente.
+
 - `src/components/ProductoCard/`: presentación reutilizable de un producto y sus estilos locales.
 - `src/pages/`: pantallas; seleccionan los productos y organizan su distribución.
 - `src/data/productos.js`: catálogo de productos.
@@ -63,7 +65,7 @@ El precio debe llegar como número, sin símbolos ni separadores. La card lo for
 
 Las ofertas nuevas se determinan mediante `precioAnterior > precio`; no hace falta agregar `"Oferta"` a `badges`. El filtro de inicio usa la misma regla (`esOferta`), manteniendo también el soporte del `label` existente. Un badge personalizado por sí solo no modifica precios ni filtros.
 
-La card ocupa el ancho de su contenedor. `inicio.module.css` contiene un ejemplo de grilla adaptable. Los estilos de card no subrayan el enlace y conservan un indicador de foco para navegación con teclado.
+La card ocupa el ancho de su contenedor. `Inicio.module.css` contiene un ejemplo de grilla adaptable. Los estilos de card no subrayan el enlace y conservan un indicador de foco para navegación con teclado.
 
 ### Recursos y rutas pendientes
 

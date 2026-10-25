@@ -2,5 +2,17 @@
 import { productos } from "./productos";
 import { categoriasProductos } from "./categoriasProductos";
 import { promociones } from "./promociones";
+import {
+  mediosDePago,
+  preguntasMediosDePago,
+  tarjetasAceptadas,
+} from "./mediosDePago";
 
-export { productos, categoriasProductos, promociones };
+export {
+  productos,
+  categoriasProductos,
+  promociones,
+  mediosDePago,
+  preguntasMediosDePago,
+  tarjetasAceptadas,
+};

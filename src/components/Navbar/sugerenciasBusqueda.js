@@ -1,4 +1,4 @@
-export const placeholders = [
+export const sugerenciasBusqueda = [
   "Buscar",
   "¿Qué estás buscando?",
   "Encontrá tu próxima lectura",

@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { categorias } from "../../utils/productos";
-import { placeholders } from "./placeholders.js";
-import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "../../hooks/useTheme";
+import { sugerenciasBusqueda } from "./sugerenciasBusqueda.js";
+import { Link, useLocation } from "react-router-dom";
+import { useTema } from "../../hooks/useTema";
 
 
-import SearchBar from "../Searchbar/Searchbar";
+import BuscadorNavbar from "./BuscadorNavbar/BuscadorNavbar";
 import { Button } from "react-bootstrap";
-import ThemeSelector from "./ThemeSelectors/ThemeSelector";
-import CartButton from "./CartButton/CartButton";
+import SelectorTema from "./SelectorTema/SelectorTema";
+import BotonCarrito from "./BotonCarrito/BotonCarrito";
 import styles from "./Navbar.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export function Navbar() {
-  const { theme } = useTheme();
-  const navigate = useNavigate();
+  const { theme } = useTema();
+  const ubicacion = useLocation();
   const [placeholder] = useState(
-    () => placeholders[Math.floor(Math.random() * placeholders.length)],
+    () => sugerenciasBusqueda[Math.floor(Math.random() * sugerenciasBusqueda.length)],
   );
 
   const [lowerNavVisible, setLowerNavVisible] = useState(true);
@@ -60,28 +60,21 @@ export function Navbar() {
                 <img
                   src={
                     theme === "dark"
-                      ? "/logo_completo_dark.svg"
-                      : "/logo_completo_light.svg"
+                      ? "/logo_completo_oscuro.svg"
+                      : "/logo_completo_claro.svg"
                   }
                   alt="Punto y Aparte"
                   className={styles.logo}
                 />
               </Link>
-              <SearchBar
+              <BuscadorNavbar
+                key={ubicacion.key}
                 placeholder={placeholder}
-                onSearch={(valor) => {
-                  const termino = (valor ?? "").trim();
-                  navigate(
-                    termino
-                      ? `/productos?q=${encodeURIComponent(termino)}`
-                      : "/productos",
-                  );
-                }}
               />
 
               <div className={styles.navActions}>
-                <ThemeSelector />
-                <CartButton items={2} />
+                <SelectorTema />
+                <BotonCarrito items={2} />
               </div>
             </div>
           </div>

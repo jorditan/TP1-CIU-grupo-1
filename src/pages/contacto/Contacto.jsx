@@ -85,7 +85,7 @@ function Contacto() {
                     <Button disabled={!isCompleted} className={styles.boton} type="submit" variant="primary">Enviar</Button>
                 </div>
             </Form>
-            {/* MainLayout ya incluye el footer compartido de todas las páginas. */}
+            {/* EstructuraPrincipal ya incluye el footer compartido de todas las páginas. */}
         </section>
     );
 }

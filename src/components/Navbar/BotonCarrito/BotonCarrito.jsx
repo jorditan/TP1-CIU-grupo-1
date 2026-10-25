@@ -2,9 +2,9 @@ import { Button } from "react-bootstrap";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCarrito } from "../../../hooks/useCarrito";
-import styles from "./CartButton.module.css";
+import styles from "./BotonCarrito.module.css";
 
-function CartButton() {
+function BotonCarrito() {
   const { totalProductos } = useCarrito();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -31,4 +31,4 @@ function CartButton() {
   );
 }
 
-export default CartButton;
+export default BotonCarrito;

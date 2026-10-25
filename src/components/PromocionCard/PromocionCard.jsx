@@ -1,7 +1,7 @@
 import { Card, Badge } from "react-bootstrap";
-import styles from "./promotionCard.module.css";
+import styles from "./PromocionCard.module.css";
 
-function PromotionCard({ logo, banco, descripcion, dias }) {
+function PromocionCard({ logo, banco, descripcion, dias }) {
   return (
     <Card className={styles.card}>
       <Card.Header>
@@ -25,4 +25,4 @@ function PromotionCard({ logo, banco, descripcion, dias }) {
   )
 }
 
-export default PromotionCard;
+export default PromocionCard;

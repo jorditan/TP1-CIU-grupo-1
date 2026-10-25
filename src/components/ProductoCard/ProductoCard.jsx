@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Badge, Button, Card } from "react-bootstrap";
 import { formatearPrecio } from "../../utils/formatearPrecio";
 import { esOferta } from "../../utils/productos";
+import AgregarAlCarrito from "../AgregarAlCarrito/AgregarAlCarrito";
 import styles from "./ProductoCard.module.css";
 
 /** Tarjeta enlazada al detalle */
@@ -101,14 +102,11 @@ export default function ProductoCard({ producto, onAgregar }) {
           >
             Ver detalle
           </Button>
-          <Button
-            variant="primary"
+          <AgregarAlCarrito
+            producto={producto}
+            onAgregar={onAgregar}
             className={styles.boton}
-            onClick={() => onAgregar?.(producto)}
-            disabled={sinStock}
-          >
-            Agregar
-          </Button>
+          />
         </div>
       </Card.Body>
     </Card>

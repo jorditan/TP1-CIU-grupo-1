@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
-import styles from "./Searchbar.module.css";
+import styles from "./BarraBusqueda.module.css";
 
-function SearchBar({
+function BarraBusqueda({
   placeholder,
   onChange,
   value,
   onSearch,
+  inputProps,
 }) {
   return (
     <form
@@ -24,9 +25,10 @@ function SearchBar({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        {...inputProps}
       />
     </form>
   );
 }
 
-export default SearchBar;
+export default BarraBusqueda;

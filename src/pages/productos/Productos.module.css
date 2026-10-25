@@ -50,7 +50,7 @@
   margin-bottom: 24px;
 }
 
-/* El SearchBar trae width: 80% y margin-inline: auto para usarse suelto en el
+/* El BarraBusqueda trae width: 80% y margin-inline: auto para usarse suelto en el
    navbar. Acá es un item del flex, así que lo dejamos crecer con el resto. */
 .filtros > form {
   flex: 1 1 260px;

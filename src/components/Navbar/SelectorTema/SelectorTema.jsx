@@ -1,9 +1,9 @@
-import { useTheme } from "../../../hooks/useTheme";
+import { useTema } from "../../../hooks/useTema";
 import { Sun, Moon } from "lucide-react";
 import Button from "react-bootstrap/Button";
 
-function ThemeSelector() {
-  const { theme, toggleTheme } = useTheme();
+function SelectorTema() {
+  const { theme, toggleTheme } = useTema();
 
   return (
     <>
@@ -18,4 +18,4 @@ function ThemeSelector() {
   );
 }
 
-export default ThemeSelector;
+export default SelectorTema;

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { productos } from "../../data/productos";
-import { categorias } from "../../utils/productos";
+import { categorias, coincideBusqueda } from "../../utils/productos";
 import { normalizarTexto } from "../../utils/texto";
 import { useCarrito } from "../../hooks/useCarrito";
 import ProductoCard from "../../components/ProductoCard/ProductoCard";
-import SearchBar from "../../components/Searchbar/Searchbar";
+import BarraBusqueda from "../../components/BarraBusqueda/BarraBusqueda";
 import styles from "./Productos.module.css";
 
 function Productos() {
   const { agregar } = useCarrito();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Estos dos viven en la URL porque pueden llegar desde el Navbar.
+  // Estos filtros viven en la URL para poder compartir el catálogo filtrado.
   const categoria = searchParams.get("categoria") ?? "";
   const busqueda = searchParams.get("q") ?? "";
 
@@ -37,9 +37,7 @@ function Productos() {
     .filter(
       (producto) =>
         termino === "" ||
-        normalizarTexto(producto.nombre).includes(termino) ||
-        normalizarTexto(producto.autor).includes(termino) ||
-        normalizarTexto(producto.categoria).includes(termino),
+        coincideBusqueda(producto, termino),
     )
     .filter((producto) => categoria === "" || producto.categoria === categoria)
     .filter((producto) => !soloConStock || producto.stock > 0)
@@ -63,10 +61,11 @@ function Productos() {
       </header>
 
       <div className={styles.filtros}>
-        <SearchBar
+        <BarraBusqueda
           placeholder="Buscar por título o autor"
           value={busqueda}
-          onChange={(e) => actualizarParam("q", e.target.value)}
+          onChange={(evento) => actualizarParam("q", evento.target.value)}
+          onSearch={(valor) => actualizarParam("q", valor)}
         />
 
         <select

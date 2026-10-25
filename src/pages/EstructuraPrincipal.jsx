@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-function MainLayout() {
+function EstructuraPrincipal() {
   return (
     <>
       <Navbar />
@@ -14,4 +14,4 @@ function MainLayout() {
   );
 }
 
-export default MainLayout;
+export default EstructuraPrincipal;

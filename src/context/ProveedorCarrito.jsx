@@ -1,8 +1,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { CarritoContext } from "./CarritoContext";
+import { ContextoCarrito } from "./ContextoCarrito";
 
-function CarritoProvider({ children }) {
+function ProveedorCarrito({ children }) {
   const [carrito, setCarrito] = useState([]);
 
   const agregar = (producto) => {
@@ -71,7 +71,7 @@ function CarritoProvider({ children }) {
   );
 
   return (
-    <CarritoContext.Provider
+    <ContextoCarrito.Provider
       value={{
         carrito,
         agregar,
@@ -84,8 +84,8 @@ function CarritoProvider({ children }) {
       }}
     >
       {children}
-    </CarritoContext.Provider>
+    </ContextoCarrito.Provider>
   );
 }
 
-export default CarritoProvider;
+export default ProveedorCarrito;

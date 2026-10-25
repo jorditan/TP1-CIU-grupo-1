@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
+import { ContextoCarrito } from "../context/ContextoCarrito";
 
 export function useCarrito() {
-  const contexto = useContext(CarritoContext);
+  const contexto = useContext(ContextoCarrito);
   if (!contexto) {
-    throw new Error("useCarrito tiene que usarse dentro de <CarritoProvider>");
+    throw new Error("useCarrito tiene que usarse dentro de <ProveedorCarrito>");
   }
   return contexto;
 }
