@@ -28,7 +28,6 @@ function MasVendidos() {
     <section className={styles.seccion}>
       <header className={styles.encabezado}>
         <div>
-          <span className={styles.etiqueta}>LOS FAVORITOS DE LOS LECTORES</span>
           <h1 className={styles.titulo}>Más vendidos</h1>
           <p className={styles.introduccion}>
             Los libros que más se llevan nuestros lectores. Si no sabés qué
