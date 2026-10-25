@@ -964,5 +964,113 @@ export const productos = [
             anio: 2022
         },
         badges: ["Novedad"]
+    },
+        {
+        id: 51,
+        nombre: "Mad Max: Fury Road",
+        autor: "George Miller",
+        categoria: "Ciencia Ficción",
+        precio: 18000,
+        imagen: "/img/usado-mad-max-fury-road.webp",
+        descripcion: "Una persecución a toda velocidad por el desierto en un futuro postapocalíptico.",
+        sinopsis: "En un páramo desértico dominado por el tirano Immortan Joe, la emperatriz Furiosa escapa con las esposas del líder a bordo de un camión de guerra. Max, un errante solitario, se une a la huida en una persecución que no da tregua.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "Warner Bros. Pictures",
+            duracion: "120 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 2015
+        },
+        badges: ["Usado"]
+    },
+    {
+        id: 52,
+        nombre: "Nomadland",
+        autor: "Chloé Zhao",
+        categoria: "Ficción",
+        precio: 15000,
+        imagen: "/img/usado-nomadland.webp",
+        descripcion: "Una mujer recorre el oeste de Estados Unidos viviendo en su camioneta.",
+        sinopsis: "Tras perder su empleo y su pueblo en plena crisis económica, Fern se lanza a la ruta en una camioneta y adopta una vida nómade. En el camino conoce a otros viajeros y descubre otra forma de pertenecer.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "Searchlight Pictures",
+            duracion: "108 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 2020
+        },
+        badges: ["Usado"]
+    },
+    {
+        id: 53,
+        nombre: "Point Break",
+        autor: "Kathryn Bigelow",
+        categoria: "Policial",
+        precio: 14000,
+        imagen: "/img/usado-point-break.webp",
+        descripcion: "Un agente del FBI se infiltra en una banda de surfistas sospechosa de robar bancos.",
+        sinopsis: "El joven agente Johnny Utah investiga una serie de asaltos a bancos y se infiltra en el mundo del surf para dar con los responsables. Cuanto más se acerca al carismático líder del grupo, más se difuminan los límites entre la ley y la aventura.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "20th Century Fox",
+            duracion: "122 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 1991
+        },
+        badges: ["Usado"]
+    },
+    {
+        id: 54,
+        nombre: "Cast Away (Náufrago)",
+        autor: "Robert Zemeckis",
+        categoria: "Ficción",
+        precio: 14500,
+        imagen: "/img/usado-cast-away.webp",
+        descripcion: "Un hombre sobrevive solo en una isla desierta tras un accidente aéreo.",
+        sinopsis: "Chuck Noland, ingeniero de una empresa de paquetería, sobrevive a la caída de su avión en el Pacífico y queda varado en una isla deshabitada. Durante años deberá ingeniárselas para sobrevivir y mantener la esperanza de volver a casa.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "20th Century Fox / DreamWorks Pictures",
+            duracion: "143 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 2000
+        },
+        badges: ["Usado"]
+    },
+    {
+        id: 55,
+        nombre: "Nope",
+        autor: "Jordan Peele",
+        categoria: "Terror",
+        precio: 17000,
+        imagen: "/img/usado-nope.webp",
+        descripcion: "Dos hermanos criadores de caballos descubren algo inexplicable en el cielo de su rancho.",
+        sinopsis: "OJ y Emerald Haywood administran un rancho de caballos para producciones de cine en California. Cuando comienzan a ocurrir sucesos extraños sobre el rancho, deciden captar la evidencia en video, sin imaginar a qué se enfrentan.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "Universal Pictures",
+            duracion: "131 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 2022
+        },
+        badges: ["Usado"]
+    },
+    {
+        id: 56,
+        nombre: "La mosca (The Fly)",
+        autor: "David Cronenberg",
+        categoria: "Terror",
+        precio: 14000,
+        imagen: "/img/usado-the-fly.webp",
+        descripcion: "Un científico fusiona su ADN con el de una mosca tras un experimento de teletransportación.",
+        sinopsis: "El excéntrico científico Seth Brundle perfecciona unas cabinas de teletransportación y decide probarlas en sí mismo, sin notar que una mosca entró con él. Mientras la periodista Veronica Quaife documenta el proceso, Seth empieza a transformarse de maneras cada vez más perturbadoras.",
+        stock: 1,
+        caracteristicas: {
+            distribuidora: "20th Century Fox",
+            duracion: "96 min",
+            idioma: "Inglés, con subtítulos en español",
+            anio: 1986
+        },
+        badges: ["Usado"]
     }
 ];
