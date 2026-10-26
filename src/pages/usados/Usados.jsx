@@ -38,8 +38,8 @@ function Usados() {
           <span className={styles.etiqueta}>SEGUNDA VIDA</span>
           <h1 className={styles.titulo}>Usados</h1>
           <p className={styles.introduccion}>  
-            Libros y películas que ya tuvieron una historia y están listos para
-            empezar otra, a mejor precio. Cada ejemplar es único.
+            Libros que ya tuvieron una historia y están listos para empezar otra,
+            a mejor precio. Cada ejemplar es único.
           </p>
         </div>
         <p className={styles.contador}>
