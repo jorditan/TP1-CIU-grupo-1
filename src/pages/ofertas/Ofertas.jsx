@@ -35,8 +35,8 @@ function Ofertas() {
                     <span className={styles.etiqueta}>EN OFERTA</span>
                     <h1 className={styles.titulo}>Ofertas</h1>
                     <p className={styles.introduccion}>
-                        Los libros mas destacados en estas ofertas a precios reducidos. Descubrí qué hay de
-                        nuevo antes que nadie.
+                        Los libros mas destacados en estas ofertas a precios reducidos. Descubre aqui libros destacados
+                        a un buen precio en oferta.
                     </p>
                 </div>
                 <p className={styles.contador}>
