@@ -4,6 +4,7 @@ import Inicio from "./pages/inicio/Inicio.jsx";
 import Carrito from "./pages/carrito/Carrito.jsx";
 import Productos from "./pages/productos/Productos.jsx";
 import Contacto from "./pages/contacto/Contacto.jsx";
+import Ofertas from "./pages/ofertas/Ofertas.jsx";
 import DetalleProducto from "./pages/DetalleProducto.jsx";
 import MasVendidos from "./pages/masvendidos/MasVendidos.jsx";
 import Usados from "./pages/usados/Usados.jsx";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/medios-de-pago" element={<MediosDePago />} />
+          <Route path="/ofertas" element={<Ofertas />} />
           <Route path="/mas-vendidos" element={<MasVendidos />} />
           <Route path="/novedades" element={<Novedades />} />
           <Route path="/usados" element={<Usados />} />
