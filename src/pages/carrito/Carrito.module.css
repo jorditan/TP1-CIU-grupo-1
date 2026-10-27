@@ -6,9 +6,8 @@
 }
 
 .titulo {
+  composes: titulo from "../../styles/EncabezadoSeccion.module.css";
   margin-bottom: 24px;
-  font-size: 1.8rem;
-  font-weight: 700;
 }
 
 .vacio {

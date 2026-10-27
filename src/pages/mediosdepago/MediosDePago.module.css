@@ -6,7 +6,7 @@
 
 .encabezado {
   max-width: 720px;
-  margin-block: 32px;
+  margin-block: 0 24px;
 }
 
 .etiqueta {
@@ -17,10 +17,7 @@
 }
 
 .titulo {
-  margin-block: 12px 16px;
-  color: var(--color-text);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  composes: titulo from "../../styles/EncabezadoSeccion.module.css";
 }
 
 .introduccion {

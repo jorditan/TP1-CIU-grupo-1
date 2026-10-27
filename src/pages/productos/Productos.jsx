@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { productos } from "../../data/productos";
 import { categorias, coincideBusqueda } from "../../utils/productos";
-import { normalizarTexto } from "../../utils/texto";
+import { useFiltrosLibros } from "../../hooks/useFiltrosLibros";
 import { useCarrito } from "../../hooks/useCarrito";
 import ProductoCard from "../../components/ProductoCard/ProductoCard";
 import BarraBusqueda from "../../components/BarraBusqueda/BarraBusqueda";
@@ -10,35 +9,14 @@ import styles from "./Productos.module.css";
 
 function Productos() {
   const { agregar } = useCarrito();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  // Estos filtros viven en la URL para poder compartir el catálogo filtrado.
-  const categoria = searchParams.get("categoria") ?? "";
-  const busqueda = searchParams.get("q") ?? "";
+  const { categoria, busqueda, termino, actualizarParam } = useFiltrosLibros();
 
   // Estos dos solo importan mientras estás en esta pantalla.
   const [orden, setOrden] = useState("");
   const [soloConStock, setSoloConStock] = useState(false);
 
-  const actualizarParam = (clave, valor) => {
-    const siguientes = new URLSearchParams(searchParams);
-    if (valor) {
-      siguientes.set(clave, valor);
-    } else {
-      siguientes.delete(clave);
-    }
-    // replace: true para no llenar el historial con una entrada por tecla.
-    setSearchParams(siguientes, { replace: true });
-  };
-
-  const termino = normalizarTexto(busqueda.trim());
-
   const productosAMostrar = productos
-    .filter(
-      (producto) =>
-        termino === "" ||
-        coincideBusqueda(producto, termino),
-    )
+    .filter((producto) => termino === "" || coincideBusqueda(producto, termino))
     .filter((producto) => categoria === "" || producto.categoria === categoria)
     .filter((producto) => !soloConStock || producto.stock > 0)
     .sort((a, b) => {
@@ -104,9 +82,7 @@ function Productos() {
       </div>
 
       {productosAMostrar.length === 0 ? (
-        <p className={styles.vacio}>
-          No encontramos libros con esos filtros.
-        </p>
+        <p className={styles.vacio}>No encontramos libros con esos filtros.</p>
       ) : (
         <div className={styles.grilla}>
           {productosAMostrar.map((producto) => (

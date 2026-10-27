@@ -16,10 +16,7 @@
 }
 
 .titulo {
-  margin: 0;
-  color: var(--color-text);
-  font-size: 2rem;
-  font-weight: 700;
+  composes: titulo from "../../styles/EncabezadoSeccion.module.css";
 }
 
 .contador {
@@ -29,11 +26,14 @@
 }
 
 .grilla {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
   gap: 24px;
   align-items: stretch;
-  justify-content: center;
+}
+
+.grilla > :only-child {
+  grid-column: 1;
 }
 
 .vacio {

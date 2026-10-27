@@ -23,6 +23,9 @@
   --color-error: #c2413b;
 
   --bs-primary: var(--color-primary);
+  --bs-primary-rgb: 36, 72, 61;
+  --bs-warning-rgb: 184, 107, 75;
+  --bs-success-rgb: 40, 122, 84;
   --bs-body-color: var(--color-text);
   --bs-body-bg: var(--color-background);
   --bs-secondary-color: var(--color-text-secondary);
@@ -50,6 +53,23 @@
   --color-accent: #dfa182;
   --color-success: #80cba2;
   --color-error: #f28b82;
+  --bs-primary-rgb: 139, 199, 172;
+  --bs-warning-rgb: 223, 161, 130;
+  --bs-success-rgb: 128, 203, 162;
+}
+
+/* Todos los badges comparten la tipografía y las medidas de las categorías. */
+.badge {
+  --bs-badge-font-size: 0.75rem;
+  --bs-badge-font-weight: 500;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-border-radius: var(--bs-border-radius);
+}
+
+/* Las variantes de Badge usan la paleta del sitio en ambos temas. */
+.badge:is(.bg-primary, .bg-warning, .bg-success) {
+  color: var(--color-background);
 }
 
 body {

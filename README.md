@@ -1,29 +1,98 @@
 # Punto y Aparte
 
-Tienda de libros desarrollada con React, Vite y React Bootstrap.
+Punto y Aparte es una tienda online de libros nuevos y usados, desarrollada como trabajo práctico de la asginatura Construcción de Interfaces de Usuario de la UNAHUR. Permite explorar el catálogo, buscar y filtrar libros, consultar sus detalles y gestionar un carrito con confirmación de compra simulada.
 
-## Desarrollo
+## Tecnologías utilizadas
+
+- React: componentes funcionales, hooks y estado compartido mediante Context.
+- Vite: servidor de desarrollo y compilación para producción.
+- React Router DOM: navegación, rutas de detalle y filtros en la URL.
+- React Bootstrap y Bootstrap: componentes y utilidades de diseño responsive.
+- CSS Modules y variables CSS: estilos locales, paleta compartida y modo claro/oscuro.
+- Lucide React: iconos.
+- React Hot Toast: notificaciones.
+- ESLint y Prettier: revisión y formato del código.
+
+## Cómo instalar y correr el proyecto
+
+### Requisitos
+
+- Node.js 22 desde la versión 22.13.0, o Node.js 24.
+- npm, incluido con Node.js.
+- Git, para clonar el repositorio.
+
+### Instalación
 
 ```sh
+git clone https://github.com/jorditan/TP1-CIU-grupo-1.git
+cd TP1-CIU-grupo-1
 npm install
 npm run dev
-npm run build
-npm run lint
 ```
+
+Abrir la dirección que indique Vite en la terminal, normalmente `http://localhost:5173`. Si ese puerto está ocupado, Vite elige otro.
+
+### Otros comandos
+
+| Comando           | Función                                                                          |
+| ----------------- | -------------------------------------------------------------------------------- |
+| `npm run build`   | Genera la versión de producción en `dist/`.                                      |
+| `npm run preview` | Sirve localmente la compilación de producción; ejecutar primero `npm run build`. |
+| `npm run lint`    | Revisa el código con ESLint.                                                     |
+
+## Demo en vivo
+
+[Ver Punto y Aparte](https://tp-1-ciu-grupo-1.vercel.app/)
+
+## Integrantes del grupo
+
+- Marcelo Perez Groh
+- Elias Sebastian Dolenz
+- Pablo Elias Andino Guasch
+- Matías Owen Jordán
+
+## Funcionalidades y navegación
+
+| Ruta              | Contenido                                                                                |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| `/`               | Inicio con banner, libros en oferta, nuevos ingresos, promociones y categorías.          |
+| `/productos`      | Catálogo con búsqueda, categorías, orden por precio y filtro de stock.                   |
+| `/productos/:id`  | Detalle con portada, descripción, sinopsis, características, stock y acciones de compra. |
+| `/ofertas`        | Libros con descuento o identificados como oferta.                                        |
+| `/novedades`      | Libros con las etiquetas `Nuevo` o `Novedad`.                                            |
+| `/mas-vendidos`   | Libros con la etiqueta `Más vendido`.                                                    |
+| `/usados`         | Libros con la etiqueta `Usado`.                                                          |
+| `/carrito`        | Productos agregados, cantidades, subtotales, total y confirmación simulada.              |
+| `/contacto`       | Formulario controlado con validaciones y confirmación.                                   |
+| `/medios-de-pago` | Información de medios de pago y promociones de demostración.                             |
+
+La búsqueda de los listados encuentra coincidencias por título, autor o categoría e ignora tildes y mayúsculas. La consulta se conserva en el parámetro `q` de la URL; la categoría, en `categoria`. Por ejemplo: `/productos?q=dracula&categoria=Terror`.
+
+Ofertas, Novedades y Usados también permiten ordenar por precio y filtrar por stock; Más vendidos permite filtrar por categoría y stock. En Inicio, la búsqueda filtra los listados de ofertas y nuevos ingresos.
+
+El carrito se mantiene en el estado de React durante la sesión de la aplicación y se reinicia al recargar la página. Los productos sin stock no se pueden agregar y las cantidades no pueden superar las unidades disponibles. El modo claro/oscuro guarda la preferencia en `localStorage`.
 
 ## Estructura
 
-Los archivos propios del proyecto se nombran en español, sin tildes y con el mismo nombre para el componente y su CSS Module (por ejemplo, `PromocionCard.jsx` y `PromocionCard.module.css`). Se conservan `Card`, `Navbar` y `Footer`, el prefijo `use` de los hooks y los nombres convencionales de entrada y configuración (`App`, `main`, `index`, etc.). Las carpetas de componentes acompañan el nombre del componente.
+Los componentes se organizan en carpetas con su archivo JSX y su CSS Module. Se conservan nombres como `Card`, `Navbar`, `Footer` y el prefijo `use` de los hooks.
 
-- `src/components/ProductoCard/`: presentación reutilizable de un producto y sus estilos locales.
-- `src/pages/`: pantallas; seleccionan los productos y organizan su distribución.
-- `src/data/productos.js`: catálogo de productos.
-- `src/utils/formatearPrecio.js`: formato de moneda argentina compartido.
-- `src/utils/productos.js`: regla compartida para identificar ofertas.
+- `src/components/`: componentes reutilizables, como `ProductoCard`, `BarraBusqueda` y `AgregarAlCarrito`.
+- `src/pages/`: pantallas y distribución de los listados.
+- `src/context/`: proveedores del carrito y del tema.
+- `src/hooks/`: acceso al estado compartido y lógica de búsqueda y filtros.
+- `src/data/`: catálogo, categorías y promociones de demostración.
+- `src/utils/`: normalización de texto, búsquedas, detección de ofertas y formato de moneda.
+- `src/styles/`: estilos compartidos de los encabezados de sección.
+- `src/App.css`: tema y adaptación de componentes Bootstrap a la identidad visual.
+- `src/App.jsx`: definición de rutas.
+- `src/main.jsx`: entrada de la aplicación, Router, proveedores e importación del CSS de Bootstrap.
+- `public/img/`: portadas de los libros.
 
 ## Usar ProductoCard
 
-Requiere un Router (la aplicación ya tiene `BrowserRouter`) y el CSS de Bootstrap, importado en `src/main.jsx`.
+`ProductoCard` requiere un Router y `ProveedorCarrito`, además del CSS de Bootstrap y del tema de la aplicación. Estos ya están configurados en `src/main.jsx` y `src/App.jsx`.
+
+Ejemplo dentro de una página de la aplicación:
 
 ```jsx
 import ProductoCard from "../../components/ProductoCard/ProductoCard";
@@ -31,45 +100,52 @@ import ProductoCard from "../../components/ProductoCard/ProductoCard";
 const producto = {
   id: 7,
   nombre: "Dune",
-  imagen: "/img/dune.jpg",
+  autor: "Frank Herbert",
+  categoria: "Ciencia Ficción",
+  descripcion: "Una épica de ciencia ficción sobre política, ecología y poder.",
+  imagen: "/img/dune.webp",
   precio: 12000,
   precioAnterior: 15000,
-  badges: ["Más vendido", "Nuevo"],
-  cuotasSinInteres: 3,
+  stock: 6,
 };
 
 <ProductoCard producto={producto} />;
 
-// Para una colección, la página se ocupa del contenedor:
-<div className={styles.cardsContainer}>
+// Para una colección, la página se ocupa de la grilla:
+<div className={styles.grilla}>
   {productos.map((producto) => (
     <ProductoCard key={producto.id} producto={producto} />
   ))}
 </div>;
 ```
 
+La prop opcional `onAgregar` permite indicar una función para agregar el producto. Si no se pasa, el componente utiliza la acción del contexto del carrito.
+
 ### Datos de producto
 
-| Campo | Tipo | Comportamiento |
-| --- | --- | --- |
-| `id` | número o string, obligatorio | Identifica el producto y construye el enlace `/libro/:id`. |
-| `nombre` | string, obligatorio | Título de la card y texto alternativo de la portada. |
-| `precio` | número finito mayor o igual a 0, obligatorio | Precio final en pesos argentinos. |
-| `imagen` | string, opcional | URL de portada. Si falta o falla la carga, muestra «Portada no disponible». |
-| `precioAnterior` | número, opcional | Si supera al precio actual, muestra el precio anterior tachado y el porcentaje de descuento redondeado. |
-| `badges` | array de strings, opcional | Etiquetas adicionales; por defecto `[]`. No se repiten textos idénticos. |
-| `cuotasSinInteres` | entero, opcional | Si es mayor que 1, muestra la cantidad y el importe por cuota. |
-| `label` | string, opcional | Compatibilidad con el catálogo actual: se suma a los badges. `"Oferta"` identifica una oferta aunque todavía no tenga precio anterior. |
+| Campo              | Tipo                               | Uso                                                                                       |
+| ------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| `id`               | Número o string                    | Identificador único y enlace al detalle `/productos/:id`.                                 |
+| `nombre`           | String                             | Título y texto alternativo de la portada.                                                 |
+| `autor`            | String                             | Autor mostrado en la card y el detalle.                                                   |
+| `categoria`        | String                             | Categoría visible, búsqueda y filtros.                                                    |
+| `descripcion`      | String                             | Descripción breve; en la card se limita visualmente a dos líneas.                         |
+| `precio`           | Número mayor o igual a cero        | Precio actual en pesos argentinos.                                                        |
+| `stock`            | Número entero mayor o igual a cero | Disponibilidad y límite para agregar unidades al carrito.                                 |
+| `imagen`           | String, opcional                   | Ruta de la portada. Si falta o falla, se muestra «Portada no disponible».                 |
+| `precioAnterior`   | Número, opcional                   | Si supera al precio actual, se muestra tachado y se calcula el descuento.                 |
+| `sinopsis`         | String                             | Texto ampliado que se muestra en el detalle.                                              |
+| `caracteristicas`  | Objeto                             | Editorial, páginas, idioma, ISBN y año para la vista de detalle.                          |
+| `badges`           | Array de strings, opcional         | Etiquetas utilizadas por los listados y mostradas en el detalle; la card no las recorre.  |
+| `cuotasSinInteres` | Entero, opcional                   | Si es mayor que uno, muestra las cuotas en el detalle; no se muestran en la card.         |
+| `label`            | String, opcional                   | Compatibilidad con datos antiguos: `"Oferta"` también identifica un producto como oferta. |
 
-El precio debe llegar como número, sin símbolos ni separadores. La card lo formatea con `Intl.NumberFormat` en ARS. Los importes por cuota se muestran con hasta dos decimales; son informativos y pueden requerir ajuste de centavos en un cobro real.
+Los precios se guardan como números, sin símbolos ni separadores, y se formatean con `Intl.NumberFormat` en ARS. Una oferta se identifica por `precioAnterior > precio` o por `label === "Oferta"`. Agregar una etiqueta a `badges` no modifica el precio.
 
-Las ofertas nuevas se determinan mediante `precioAnterior > precio`; no hace falta agregar `"Oferta"` a `badges`. El filtro de inicio usa la misma regla (`esOferta`), manteniendo también el soporte del `label` existente. Un badge personalizado por sí solo no modifica precios ni filtros.
+La card muestra la categoría, el stock y el descuento cuando corresponde. Las etiquetas superpuestas de Nuevo, Usado, En oferta y los puestos de Más vendidos se agregan desde sus respectivas páginas con `Badge` de React Bootstrap.
 
-La card ocupa el ancho de su contenedor. `Inicio.module.css` contiene un ejemplo de grilla adaptable. Los estilos de card no subrayan el enlace y conservan un indicador de foco para navegación con teclado.
+### Imágenes y detalle
 
-### Recursos y rutas pendientes
+Las portadas están incluidas en `public/img/`. Una ruta como `/img/dune.webp` corresponde al archivo `public/img/dune.webp`.
 
-Para una imagen `/img/dune.jpg`, guardar el archivo en `public/img/dune.jpg`. Las portadas referenciadas por el catálogo todavía no están incluidas. La card conserva el enlace a `/libro/:id`, pero la ruta de detalle todavía debe implementarse en `App.jsx`.
-
-El catálogo contiene datos de demostración: las seis ofertas tienen precios anteriores de referencia y tres cuotas sin interés. Otros productos incluyen seis cuotas o varias etiquetas. Estos valores son ficticios para mostrar los estados de la card; los precios actuales se conservaron. Las etiquetas se guardan en `badges`; `label` solo se admite por compatibilidad con datos antiguos.
-
+La ruta de detalle `/productos/:id` está implementada en `src/App.jsx`. Cada `id` utilizado en una card debe corresponder a un producto del catálogo para que se encuentre su ficha.

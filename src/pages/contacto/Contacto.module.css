@@ -1,13 +1,11 @@
-﻿.seccion {
+.seccion {
   max-width: 1280px;
   margin-inline: auto;
   padding: 32px 16px 64px;
 }
 
 .titulo {
-  margin-bottom: 16px;
-  font-size: 1.8rem;
-  font-weight: 700;
+  composes: titulo from "../../styles/EncabezadoSeccion.module.css";
 }
 
 .formulario {

@@ -6,6 +6,11 @@
   background-color: var(--color-background);
 }
 
+.filtros > form {
+  width: 100%;
+  margin-inline: 0;
+}
+
 @media (max-width: 575.98px) {
   .homeSection {
     padding: 3rem 1rem;
@@ -19,11 +24,14 @@
 }
 
 .cardsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
   gap: 16px;
   background-color: var(--color-background);
+}
+
+.cardsContainer > :only-child {
+  grid-column: 1;
 }
 
 hr {
