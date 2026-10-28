@@ -62,13 +62,26 @@ Abrir la dirección que indique Vite en la terminal, normalmente `http://localho
 | `/novedades`      | Libros con las etiquetas `Nuevo` o `Novedad`.                                            |
 | `/mas-vendidos`   | Libros con la etiqueta `Más vendido`.                                                    |
 | `/usados`         | Libros con la etiqueta `Usado`.                                                          |
-| `/carrito`        | Productos agregados, cantidades, subtotales, total y confirmación simulada.              |
-| `/contacto`       | Formulario controlado con validaciones y confirmación.                                   |
+| `/carrito`        | Productos agregados, cantidades, subtotales, total y formulario de compra simulada.      |
+| `/contacto`       | Formulario de contacto controlado con validación y mensaje de confirmación.              |
 | `/medios-de-pago` | Información de medios de pago y promociones de demostración.                             |
 
 La búsqueda de los listados encuentra coincidencias por título, autor o categoría e ignora tildes y mayúsculas. La consulta se conserva en el parámetro `q` de la URL; la categoría, en `categoria`. Por ejemplo: `/productos?q=dracula&categoria=Terror`.
 
 Ofertas, Novedades y Usados también permiten ordenar por precio y filtrar por stock; Más vendidos permite filtrar por categoría y stock. En Inicio, la búsqueda filtra los listados de ofertas y nuevos ingresos.
+
+### Finalizar compra
+
+La compra se completa en `/carrito`, debajo de la lista de productos, con el componente `FormularioCompra`. Solo aparece cuando el carrito tiene productos, por lo que no se puede confirmar una compra con el carrito vacío.
+
+El formulario es controlado (`useState`, `onChange` y `onSubmit`) y pide:
+
+- Datos personales: nombre, apellido, correo electrónico y teléfono.
+- Entrega: método de entrega (envío a domicilio o retiro en sucursal), dirección, código postal, ciudad y provincia.
+- Pago simulado: número de tarjeta, vencimiento y código de seguridad.
+- Aclaraciones: campo opcional.
+
+Las validaciones se calculan a partir del estado y se muestran después del primer intento de envío: campos obligatorios, correo con formato válido, teléfono de 7 a 15 dígitos, tarjeta de 16 dígitos, código de seguridad de 3 dígitos y vencimiento que no sea anterior al mes actual. Al confirmar, el carrito se vacía y un modal agradece la compra. La compra es solo una simulación: los datos de la tarjeta no se guardan ni se envían a ningún lado.
 
 El carrito se mantiene en el estado de React durante la sesión de la aplicación y se reinicia al recargar la página. Los productos sin stock no se pueden agregar y las cantidades no pueden superar las unidades disponibles. El modo claro/oscuro guarda la preferencia en `localStorage`.
 
@@ -76,7 +89,7 @@ El carrito se mantiene en el estado de React durante la sesión de la aplicació
 
 Los componentes se organizan en carpetas con su archivo JSX y su CSS Module. Se conservan nombres como `Card`, `Navbar`, `Footer` y el prefijo `use` de los hooks.
 
-- `src/components/`: componentes reutilizables, como `ProductoCard`, `BarraBusqueda` y `AgregarAlCarrito`.
+- `src/components/`: componentes reutilizables, como `ProductoCard`, `BarraBusqueda`, `AgregarAlCarrito` y `FormularioCompra`.
 - `src/pages/`: pantallas y distribución de los listados.
 - `src/context/`: proveedores del carrito y del tema.
 - `src/hooks/`: acceso al estado compartido y lógica de búsqueda y filtros.

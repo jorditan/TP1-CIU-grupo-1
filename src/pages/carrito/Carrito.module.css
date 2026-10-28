@@ -66,6 +66,16 @@
   border-radius: 10px;
 }
 
+/* Mismo aspecto de tarjeta que el resumen, pero sin sticky */
+.formulario {
+  margin-top: 12px;
+  padding: 20px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  scroll-margin-top: 96px;
+}
+
 .tituloResumen {
   margin: 0 0 4px;
   font-size: 1.2rem;

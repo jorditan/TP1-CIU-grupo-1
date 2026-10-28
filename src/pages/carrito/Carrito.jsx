@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCarrito } from "../../hooks/useCarrito";
 import { formatearPrecio } from "../../utils/formatearPrecio";
 import ItemCarrito from "../../components/ItemCarrito/ItemCarrito";
+import FormularioCompra from "../../components/FormularioCompra/FormularioCompra";
 import styles from "./Carrito.module.css";
 import { Button } from "react-bootstrap";
 
@@ -17,10 +18,11 @@ function Carrito() {
     total,
   } = useCarrito();
 
-  const [compraConfirmada, setCompraConfirmada] = useState(false);
+  // Guarda los datos del comprador al confirmar; null mientras no hay compra.
+  const [compra, setCompra] = useState(null);
 
-  const handleConfirmar = () => {
-    setCompraConfirmada(true);
+  const handleConfirmar = (datosComprador) => {
+    setCompra(datosComprador);
     vaciar();
   };
 
@@ -53,6 +55,17 @@ function Carrito() {
                 onEliminar={eliminar}
               />
             ))}
+
+            <section
+              id="finalizar-compra"
+              className={styles.formulario}
+              aria-labelledby="finalizar-compra-titulo"
+            >
+              <h2 id="finalizar-compra-titulo" className={styles.tituloResumen}>
+                Finalizar compra
+              </h2>
+              <FormularioCompra onConfirmar={handleConfirmar} />
+            </section>
           </div>
 
           <aside className={styles.resumen} aria-label="Resumen de compra">
@@ -69,12 +82,12 @@ function Carrito() {
 
             <div className={styles.acciones}>
               <Button
+                as="a"
+                href="#finalizar-compra"
                 variant="primary"
-                type="button"
-                onClick={handleConfirmar}
                 className={styles.botonConfirmar}
               >
-                Confirmar compra
+                Ir a finalizar compra
               </Button>
               <Button
                 type="button"
@@ -88,16 +101,17 @@ function Carrito() {
         </div>
       )}
 
-      {compraConfirmada && (
+      {compra && (
         <div className={styles.modalOverlay} role="dialog" aria-modal="true">
           <div className={styles.modal}>
             <h2 className={styles.modalTitulo}>¡Compra confirmada!</h2>
             <p className={styles.modalTexto}>
-              Gracias por tu compra. Te vamos a contactar para coordinar la entrega.
+              Gracias por tu compra, {compra.nombre}. Te vamos a escribir a{" "}
+              {compra.email} para coordinar la entrega.
             </p>
             <button
               type="button"
-              onClick={() => setCompraConfirmada(false)}
+              onClick={() => setCompra(null)}
               className={styles.botonCerrar}
             >
               Cerrar
@@ -108,5 +122,11 @@ function Carrito() {
     </section>
   );
 }
+
+
+
+  
+
+
 
 export default Carrito;
